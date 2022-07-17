@@ -1,49 +1,69 @@
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class Main {
-    public static HashMap<String, ArrayList<String> > wordToDocumentMap = new HashMap<>();
-
-    public static void init(){
-        File dir = new File("C:\\Users\\gamer\\OneDrive\\Desktop\\InvertedIndex\\Resources");
-        showFiles(dir.listFiles());
+    public static void init() {
+        InvertedIndex.showFiles(FileReader.readFiles("C:\\Users\\gamer\\OneDrive\\Desktop\\InvertedIndex\\Resources"));
     }
-    public static void showFiles(File[] files) {
-        for (File file : files) {
-            try {
-                String content = Files.readString(Paths.get(file.getPath()));
-                content = content.toUpperCase();
-                String[] words = content.split("\\s");
-                for (String word : words) {
-                    if (wordToDocumentMap.containsKey(word)) {
-                        wordToDocumentMap.get(word).add(file.getName());
-                    } else {
-                        ArrayList<String> documentList= new ArrayList<>();
-                        documentList.add(file.getName());
-                        wordToDocumentMap.put(word, documentList);
-                    }
-                }
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+    public static void endProgramWithNothing() {
+        System.out.println("No documents were found!");
+        System.exit(0);
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String word = scanner.nextLine();
-        word = word.toUpperCase();
+        String words = scanner.nextLine();
+        words = words.toUpperCase();
+        String[] wordsToFind = words.split("\\s");
+
         init();
-        if (wordToDocumentMap.containsKey(word)) {
-            for (String s : wordToDocumentMap.get(word)) {
-                System.out.println(s);
+
+        ArrayList<String> documentNames = FileReader.getFileNames("C:\\Users\\gamer\\OneDrive\\Desktop\\InvertedIndex\\Resources");
+        ArrayList<String> plusWords = new ArrayList<>();
+        ArrayList<String> minusWords = new ArrayList<>();
+        ArrayList<String> normalWords = new ArrayList<>();
+
+        for (String word : wordsToFind) {
+            if (word.startsWith("+")) {
+                plusWords.add(word.substring(1));
+            } else if (word.startsWith("-")) {
+                minusWords.add(word.substring(1));
+            } else {
+                normalWords.add(word);
             }
-        } else {
-            System.out.println("Word not found !");
         }
+
+        documentNames.removeIf(documentName -> {
+            boolean flg = false;
+            for (String normalWord : normalWords) {
+                if (!InvertedIndex.wordToDocumentMap.get(normalWord).contains(documentName)) {
+                    flg = true;
+                }
+
+            }
+            return flg;
+        });
+
+
+        ArrayList<String> documentsWithPlusWords = new ArrayList<>();
+        for (String word : plusWords) documentsWithPlusWords.addAll(InvertedIndex.wordToDocumentMap.get(word));
+
+        if (!documentsWithPlusWords.isEmpty())
+            documentNames.removeIf(s -> !documentsWithPlusWords.contains(s));
+
+
+        ArrayList<String> documentsWithMinusWords = new ArrayList<>();
+        for (String word : minusWords) documentsWithMinusWords.addAll(InvertedIndex.wordToDocumentMap.get(word));
+
+        documentNames.removeIf(documentsWithMinusWords::contains);
+
+        if (documentNames.isEmpty()){
+            endProgramWithNothing();
+        }
+
+        Collections.sort(documentNames);
+        for (String documentName : documentNames) {
+            System.out.println(documentName);
+        }
+
     }
 }
