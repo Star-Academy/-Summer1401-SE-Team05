@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Main {
     public static void init() {
-        InvertedIndex.showFiles(FileReader.readFiles("C:\\Users\\gamer\\OneDrive\\Desktop\\InvertedIndex\\Resources"));
+        InvertedIndex.showFiles(FileReader.readFiles("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\Resources"));
     }
     public static void endProgramWithNothing() {
         System.out.println("No documents were found!");
@@ -17,7 +17,7 @@ public class Main {
 
         init();
 
-        ArrayList<String> documentNames = FileReader.getFileNames("C:\\Users\\gamer\\OneDrive\\Desktop\\InvertedIndex\\Resources");
+        ArrayList<String> documentNames = FileReader.getFileNames("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\Resources");
         ArrayList<String> plusWords = new ArrayList<>();
         ArrayList<String> minusWords = new ArrayList<>();
         ArrayList<String> normalWords = new ArrayList<>();
@@ -29,6 +29,12 @@ public class Main {
                 minusWords.add(word.substring(1));
             } else {
                 normalWords.add(word);
+            }
+        }
+
+        for (String normalWord : normalWords) {
+            if (!InvertedIndex.wordToDocumentMap.containsKey(normalWord)){
+                endProgramWithNothing();
             }
         }
 
