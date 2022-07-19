@@ -8,17 +8,19 @@ import java.util.Objects;
 
 public class FileReader {
     public static String path = "C:\\Users\\gamer\\OneDrive\\Desktop\\InvertedIndex\\Resources";
+
+    public static String getFileContent(File file){
+        try {
+            return Files.readString(Paths.get(file.getPath()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static HashMap<String, String> readFiles() {
         File dir = new File(path);
         HashMap<String, String> fileNameToContent = new HashMap<>();
         for (File file : Objects.requireNonNull(dir.listFiles())) {
-            String content;
-            try {
-                content = Files.readString(Paths.get(file.getPath()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            content = content.toUpperCase();
+            String content = getFileContent(file).toUpperCase();
             fileNameToContent.put(file.getName(), content);
         }
         return fileNameToContent;
