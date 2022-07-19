@@ -7,11 +7,12 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class FileReader {
-    public static HashMap<String, String> readFiles(String path) {
+    public static String path = "C:\\Users\\gamer\\OneDrive\\Desktop\\InvertedIndex\\Resources";
+    public static HashMap<String, String> readFiles() {
         File dir = new File(path);
         HashMap<String, String> fileNameToContent = new HashMap<>();
         for (File file : Objects.requireNonNull(dir.listFiles())) {
-            String content = null;
+            String content;
             try {
                 content = Files.readString(Paths.get(file.getPath()));
             } catch (IOException e) {
@@ -23,7 +24,7 @@ public class FileReader {
         return fileNameToContent;
     }
 
-    public static ArrayList<String> getFileNames(String path){
+    public static ArrayList<String> getFileNames(){
         File dir = new File(path);
         ArrayList<String> fileNames = new ArrayList<>();
 
