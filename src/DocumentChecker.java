@@ -27,7 +27,7 @@ public class DocumentChecker {
         return false;
     }
 
-    public static boolean checkPlusWords(ArrayList<String> plusWords, String documentName) {
+    public static boolean checkIfContainsPlusWords(ArrayList<String> plusWords, String documentName) {
 
         return !plusWords.contains(documentName);
 
@@ -40,12 +40,17 @@ public class DocumentChecker {
 
     }
 
+
+    public static boolean checkPlusWords(WordContainer wordContainer, String documentName) {
+        return (!getDocumentsWithPlusWords(wordContainer).isEmpty() &&
+                checkIfContainsPlusWords(getDocumentsWithPlusWords(wordContainer), documentName));
+    }
     public static ArrayList<String> remove(WordContainer wordContainer, ArrayList<String> documentNames) {
 
 
-        documentNames.removeIf(documentName -> checkNormalWords(wordContainer.normalWords, documentName) ||
-                (!getDocumentsWithPlusWords(wordContainer).isEmpty() &&
-                        checkPlusWords(getDocumentsWithPlusWords(wordContainer), documentName)) ||
+        documentNames.removeIf(documentName ->
+                checkNormalWords(wordContainer.normalWords, documentName) ||
+                checkPlusWords(wordContainer, documentName) ||
                 checkMinusWords(getDocumentsWithMinusWords(wordContainer), documentName));
 
         return documentNames;

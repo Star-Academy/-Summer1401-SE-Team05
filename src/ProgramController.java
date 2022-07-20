@@ -5,7 +5,7 @@ public class ProgramController {
         InvertedIndex.showFiles(FileReader.readFiles());
     }
 
-    public static void endIfSomeNormalWordHasNoAssociatedDocument(WordContainer wordContainer) {
+    public static void endIfSomeNormalWordHasNothing(WordContainer wordContainer) {
         for (String normalWord : wordContainer.normalWords) {
             if (!InvertedIndex.wordToDocumentMap.containsKey(normalWord)){
                 IOOperations.endProgramWithNothing();
@@ -28,7 +28,7 @@ public class ProgramController {
 
         init();
         WordContainer wordContainer = WordOperator.operate(wordsToFind);
-        endIfSomeNormalWordHasNoAssociatedDocument(wordContainer);
+        endIfSomeNormalWordHasNothing(wordContainer);
         ArrayList<String> checkedDocuments = DocumentChecker.check(wordContainer);
         printFinalAnswer(checkedDocuments);
     }
