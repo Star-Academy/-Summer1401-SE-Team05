@@ -1,9 +1,7 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class InvertedIndex {
-    public static HashMap<String, ArrayList<String>> wordToDocumentMap = new HashMap<>();
+    public static HashMap<String, Set<String>> wordToDocumentMap = new HashMap<>();
 
     public static String[] wordSplitter(Map.Entry<String, String> file) {
         String content = file.getValue();
@@ -13,10 +11,9 @@ public class InvertedIndex {
     public static void makeWordToDocumentMap(String[] words, String fileName) {
         for (String word : words) {
             if (wordToDocumentMap.containsKey(word)) {
-                if (!wordToDocumentMap.get(word).contains(fileName))
-                    wordToDocumentMap.get(word).add(fileName);
+                wordToDocumentMap.get(word).add(fileName);
             } else {
-                ArrayList<String> documentList = new ArrayList<>();
+                Set<String> documentList = new HashSet<>();
                 documentList.add(fileName);
                 wordToDocumentMap.put(word, documentList);
             }
