@@ -1,9 +1,16 @@
 import java.util.ArrayList;
 
 public class WordOperator {
-    public static WordContainer operate(String[] wordsToFind) {
-        WordContainer wordContainer = new WordContainer();
-        ArrayList<ConditionChecker> checkerList = init(wordContainer);
+    private static WordOperator single_instance;
+    public static WordOperator getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new WordOperator();
+
+        return single_instance;
+    }
+    public void operate(String[] wordsToFind) {
+        ArrayList<ConditionChecker> checkerList = init(WordContainer.getInstance());
         for (String word : wordsToFind) {
             for (ConditionChecker checker : checkerList) {
                 boolean flag = checker.checkAndAdd(word);
@@ -12,10 +19,9 @@ public class WordOperator {
                 }
             }
         }
-        return wordContainer;
     }
 
-    private static ArrayList<ConditionChecker> init(WordContainer wordContainer) {
+    private ArrayList<ConditionChecker> init(WordContainer wordContainer) {
         ArrayList<ConditionChecker> toReturn = new ArrayList<>();
         toReturn.add(new PlusWordsChecker(wordContainer));
         toReturn.add(new MinusWordsChecker(wordContainer));
