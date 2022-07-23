@@ -1,14 +1,22 @@
 import java.util.*;
 
 public class InvertedIndex {
-    public static HashMap<String, Set<String>> wordToDocumentMap = new HashMap<>();
+    private static InvertedIndex single_instance;
+    public static InvertedIndex getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new InvertedIndex();
 
-    public static String[] wordSplitter(Map.Entry<String, String> file) {
+        return single_instance;
+    }
+    public HashMap<String, Set<String>> wordToDocumentMap = new HashMap<>();
+
+    public String[] wordSplitter(Map.Entry<String, String> file) {
         String content = file.getValue();
         return content.split("\\s");
     }
 
-    public static void makeWordToDocumentMap(String[] words, String fileName) {
+    public void makeWordToDocumentMap(String[] words, String fileName) {
         for (String word : words) {
             if (wordToDocumentMap.containsKey(word)) {
                 wordToDocumentMap.get(word).add(fileName);
@@ -19,7 +27,7 @@ public class InvertedIndex {
             }
         }
     }
-    public static void showFiles(HashMap<String, String> fileNameToContent) {
+    public void showFiles(HashMap<String, String> fileNameToContent) {
         for (Map.Entry<String, String> file : fileNameToContent.entrySet()) {
             String fileName = file.getKey();
             String[] words = wordSplitter(file);

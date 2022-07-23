@@ -2,19 +2,27 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class IOOperations {
-    public static Scanner scanner = new Scanner(System.in);
+    private static IOOperations single_instance;
+    public static IOOperations getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new IOOperations();
 
-    public static void endProgramWithNothing() {
+        return single_instance;
+    }
+    public Scanner scanner = new Scanner(System.in);
+
+    public void endProgramWithNothing() {
         System.out.println("No documents were found!");
         System.exit(0);
     }
 
-    public static void printDocuments(ArrayList<String> checkedDocuments){
+    public void printDocuments(ArrayList<String> checkedDocuments){
         for (String documentName : checkedDocuments) {
             System.out.println(documentName);
         }
     }
-    public static String getLine() {
+    public String getLine() {
         return scanner.nextLine();
     }
 }

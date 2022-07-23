@@ -1,14 +1,22 @@
 import java.util.ArrayList;
 
 public class ProgramController {
+    private static ProgramController single_instance;
+    public static ProgramController getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new ProgramController();
+
+        return single_instance;
+    }
     public void init() {
-        InvertedIndex.showFiles(FileReader.readFiles());
+        InvertedIndex.getInstance().showFiles(FileReader.getInstance().readFiles());
     }
 
-    public static void endIfSomeNormalWordHasNothing(WordContainer wordContainer) {
-        for (String normalWord : wordContainer.normalWords) {
-            if (!InvertedIndex.wordToDocumentMap.containsKey(normalWord)){
-                IOOperations.endProgramWithNothing();
+    public static void endIfSomeNormalWordHasNothing() {
+        for (String normalWord : WordContainer.getInstance().normalWords) {
+            if (!InvertedIndex.getInstance().wordToDocumentMap.containsKey(normalWord)){
+                IOOperations.getInstance().endProgramWithNothing();
             }
         }
     }
@@ -16,20 +24,20 @@ public class ProgramController {
     public static void printFinalAnswer(ArrayList<String> checkedDocuments){
 
         if (checkedDocuments.isEmpty()){
-            IOOperations.endProgramWithNothing();
+            IOOperations.getInstance().endProgramWithNothing();
         }
 
-        IOOperations.printDocuments(checkedDocuments);
+        IOOperations.getInstance().printDocuments(checkedDocuments);
     }
 
     public void run() {
-        String words = IOOperations.getLine().toUpperCase();
+        String words = IOOperations.getInstance().getLine().toUpperCase();
         String[] wordsToFind = words.split("\\s");
 
         init();
-        WordContainer wordContainer = WordOperator.operate(wordsToFind);
-        endIfSomeNormalWordHasNothing(wordContainer);
-        ArrayList<String> checkedDocuments = DocumentChecker.check(wordContainer);
+        WordOperator.getInstance().operate(wordsToFind);
+        endIfSomeNormalWordHasNothing();
+        ArrayList<String> checkedDocuments = DocumentChecker.getInstance().check();
         printFinalAnswer(checkedDocuments);
     }
 }
