@@ -12,19 +12,24 @@ public class DocumentChecker {
 
     public static ArrayList<String> getDocumentsWithMinusWords(WordContainer wordContainer) {
         ArrayList<String> documentsWithMinusWords = new ArrayList<>();
-        for (String word : wordContainer.minusWords)
+        for (String word : wordContainer.minusWords) {
             documentsWithMinusWords.addAll(InvertedIndex.wordToDocumentMap.get(word));
+        }
         return documentsWithMinusWords;
     }
 
     public static boolean checkNormalWords(ArrayList<String> normalWords, String documentName) {
         for (String normalWord : normalWords) {
-            if (!InvertedIndex.wordToDocumentMap.get(normalWord).contains(documentName)) {
+            if (!documentContainsWord(normalWord, documentName)) {
                 return true;
             }
 
         }
         return false;
+    }
+
+    public static boolean documentContainsWord(String word, String documentName){
+        return InvertedIndex.wordToDocumentMap.get(word).contains(documentName);
     }
 
     public static boolean checkIfContainsPlusWords(ArrayList<String> plusWords, String documentName) {

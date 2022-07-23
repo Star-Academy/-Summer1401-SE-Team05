@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class ProgramController {
-    public static void init() {
+    public void init() {
         InvertedIndex.showFiles(FileReader.readFiles());
     }
 
@@ -22,7 +22,7 @@ public class ProgramController {
         IOOperations.printDocuments(checkedDocuments);
     }
 
-    public static void run() {
+    public void run() {
         String words = IOOperations.getLine().toUpperCase();
         String[] wordsToFind = words.split("\\s");
 
