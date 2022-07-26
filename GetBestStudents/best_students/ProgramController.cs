@@ -13,20 +13,11 @@ class ProgramController
         _studentCount = studentsElement.GetArrayLength();
         
         List<JsonElement> scores = CreateScoresList(scoresElement);
-        List<Student> students = CreateStudentsList(scores, studentsElement);
+        List<Student> students = CreateStudentsList(studentsElement);
+        students = AddStudentAverages(students, scores);
 
         students = SortStudentsByAvg(students);
         new View().PrintList(students.GetRange(0, 3));
-    }
-
-    private void WriteOutput(List<Student> students)
-    {
-        for(int i = 0; i < students.Count; i++) {
-            Console.Write(students[i].FirstName + " ");
-            Console.WriteLine(students[i].LastName);
-            Console.WriteLine(students[i].Avg);
-            Console.WriteLine("");
-        }
     }
 
     private List<Student> SortStudentsByAvg(List<Student> students)
@@ -34,20 +25,25 @@ class ProgramController
         return students.OrderByDescending(o=>o.Avg).ToList();
     }
 
-    private List<Student> CreateStudentsList(List<JsonElement> scores, JsonElement studentRoot)
+    private List<Student> CreateStudentsList(JsonElement studentRoot)
     {
         List<Student> students = new List<Student>();
         for(int i = 0; i < _studentCount; i++)
         {
-            Student student = new Student(studentRoot[i].GetProperty("StudentNumber").GetInt32(),
-                studentRoot[i].GetProperty("FirstName").GetString(),
-                studentRoot[i].GetProperty("LastName").GetString());
+            students.Add(new Student(studentRoot[i]));
+        }
 
-            List<JsonElement> tempScores = new List<JsonElement>(scores.Where(x => x.GetProperty("StudentNumber").GetInt32() == i + 1));
+        return students;
+    }
+
+    private List<Student> AddStudentAverages(List<Student> students, List<JsonElement> scores)
+    {
+        foreach (var student in students)
+        {
+            List<JsonElement> tempScores = new List<JsonElement>(scores
+                .Where(x => student.ScoreIsForStudent(x)));
 
             student.Avg = tempScores.ConvertAll(x => x.GetProperty("Score").GetDouble()).Average();
-            
-            students.Add(student);
         }
 
         return students;
@@ -56,6 +52,7 @@ class ProgramController
     private List<JsonElement> CreateScoresList(JsonElement root1)
     {
         List<JsonElement> scores = new List<JsonElement>();
+        
         for(int i = 0; i < root1.GetArrayLength(); i ++)
         {
             scores.Add(root1[i]);
@@ -68,9 +65,9 @@ class ProgramController
     {
         string scoresData;
         using (StreamReader r = new StreamReader(path))
-            {
-                scoresData = r.ReadToEnd();
-            }
+        {
+            scoresData = r.ReadToEnd();
+        }
         JsonDocument doc1 = JsonDocument.Parse(scoresData);
         return doc1.RootElement;
     }
