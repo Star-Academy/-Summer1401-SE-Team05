@@ -14,4 +14,8 @@ public class Student
         this.LastName = LastName;
     }
 
+    public override string ToString()
+    {
+        return $"{FirstName} {LastName} {StudentNumber}: \n {Avg}";
+    }
 }

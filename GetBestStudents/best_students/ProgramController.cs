@@ -4,23 +4,24 @@ namespace BEST_STUDENTS;
 
 class ProgramController
 {
-    private int _n;
+    private int _studentCount;
     public void Run()
     {
-        JsonElement root1 = CreateRoot1();
-        JsonElement root2 = CreateRoot2();
-        _n = root2.GetArrayLength();
-        List<Student> students = new List<Student>();
-        List<JsonElement> scores = new List<JsonElement>();
-        FillScoresList(scores, root1);
-        FillStudentsList(students, scores, root2);
+        JsonElement scoresElement = CreateJsonElementFromFile("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\scores.json");
+        JsonElement studentsElement = CreateJsonElementFromFile("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\students.json");
+        
+        _studentCount = studentsElement.GetArrayLength();
+        
+        List<JsonElement> scores = CreateScoresList(scoresElement);
+        List<Student> students = CreateStudentsList(scores, studentsElement);
+
         students = SortStudentsByAvg(students);
-        WriteOutput(students);
+        new View().PrintList(students.GetRange(0, 3));
     }
 
     private void WriteOutput(List<Student> students)
     {
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < students.Count; i++) {
             Console.Write(students[i].FirstName + " ");
             Console.WriteLine(students[i].LastName);
             Console.WriteLine(students[i].Avg);
@@ -33,49 +34,45 @@ class ProgramController
         return students.OrderByDescending(o=>o.Avg).ToList();
     }
 
-    private void FillStudentsList(List<Student> students, List<JsonElement> scores, JsonElement root2)
+    private List<Student> CreateStudentsList(List<JsonElement> scores, JsonElement studentRoot)
     {
-        for(int i = 0; i < _n; i++)
+        List<Student> students = new List<Student>();
+        for(int i = 0; i < _studentCount; i++)
         {
-            Student student = new Student(root2[i].GetProperty("StudentNumber").GetInt32(),
-                root2[i].GetProperty("FirstName").GetString(),
-                root2[i].GetProperty("LastName").GetString());
-            
+            Student student = new Student(studentRoot[i].GetProperty("StudentNumber").GetInt32(),
+                studentRoot[i].GetProperty("FirstName").GetString(),
+                studentRoot[i].GetProperty("LastName").GetString());
+
             List<JsonElement> tempScores = new List<JsonElement>(scores.Where(x => x.GetProperty("StudentNumber").GetInt32() == i + 1));
 
             student.Avg = tempScores.ConvertAll(x => x.GetProperty("Score").GetDouble()).Average();
             
             students.Add(student);
         }
+
+        return students;
     }
 
-    private void FillScoresList(List<JsonElement> scores, JsonElement root1)
+    private List<JsonElement> CreateScoresList(JsonElement root1)
     {
+        List<JsonElement> scores = new List<JsonElement>();
         for(int i = 0; i < root1.GetArrayLength(); i ++)
         {
             scores.Add(root1[i]);
         }
+
+        return scores;
     }
 
-    private JsonElement CreateRoot1()
+    private JsonElement CreateJsonElementFromFile(string path)
     {
         string scoresData;
-        using (StreamReader r = new StreamReader("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\scores.json"))
+        using (StreamReader r = new StreamReader(path))
             {
                 scoresData = r.ReadToEnd();
             }
         JsonDocument doc1 = JsonDocument.Parse(scoresData);
         return doc1.RootElement;
     }
-    private JsonElement CreateRoot2()
-    {
-        string studentsData;
-        using (StreamReader r = new StreamReader("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\students.json"))
-            {
-                studentsData = r.ReadToEnd();
-            }
-        
-        JsonDocument doc2 = JsonDocument.Parse(studentsData);
-        return doc2.RootElement;
-    }
+    
 }
