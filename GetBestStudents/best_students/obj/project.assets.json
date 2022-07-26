@@ -168,19 +168,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gamer\\.nuget\\packages\\": {}
+    "C:\\Users\\moham\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gamer\\OneDrive\\Desktop\\invertedIndex\\GetBestStudents\\best_students\\best_students.csproj",
+      "projectUniqueName": "C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\best_students.csproj",
       "projectName": "best_students",
-      "projectPath": "C:\\Users\\gamer\\OneDrive\\Desktop\\invertedIndex\\GetBestStudents\\best_students\\best_students.csproj",
-      "packagesPath": "C:\\Users\\gamer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gamer\\OneDrive\\Desktop\\invertedIndex\\GetBestStudents\\best_students\\obj\\",
+      "projectPath": "C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\best_students.csproj",
+      "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gamer\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

@@ -4,16 +4,16 @@ namespace BEST_STUDENTS;
 
 class ProgramController
 {
-    public int n;
-    public void run()
+    private int _n;
+    public void Run()
     {
         JsonElement root1 = CreateRoot1();
         //Console.WriteLine(root1);
         JsonElement root2 = CreateRoot2();
-        this.n = root2.GetArrayLength();
+        this._n = root2.GetArrayLength();
         List<Student> students = new List<Student>();
         List<JsonElement> scores = new List<JsonElement>();
-        FillscoresList(scores, root1);
+        FillScoresList(scores, root1);
         FillStudentsList(students, scores, root2);
         students = SortStudentsByAvg(students);
         WriteOutput(students);
@@ -36,24 +36,21 @@ class ProgramController
 
     private void FillStudentsList(List<Student> students, List<JsonElement> scores, JsonElement root2)
     {
-        for(int i = 0; i < n; i++)
+        for(int i = 0; i < _n; i++)
         {
-            Student student = new Student(root2[i].GetProperty("StudentNumber").GetInt32(), root2[i].GetProperty("FirstName").GetString(), root2[i].GetProperty("LastName").GetString());
+            Student student = new Student(root2[i].GetProperty("StudentNumber").GetInt32(),
+                root2[i].GetProperty("FirstName").GetString(),
+                root2[i].GetProperty("LastName").GetString());
             
-            List<JsonElement> TempScores = new List<JsonElement>(scores.Where(x => x.GetProperty("StudentNumber").GetInt32() == i + 1));
-            
-            double sum = 0;
-            for(int j = 0; j < TempScores.Count; j++)
-            {
-                sum += TempScores[j].GetProperty("Score").GetDouble();
-            }
+            List<JsonElement> tempScores = new List<JsonElement>(scores.Where(x => x.GetProperty("StudentNumber").GetInt32() == i + 1));
 
-            student.Avg = sum / ((double) TempScores.Count);
+            student.Avg = tempScores.ConvertAll(x => x.GetProperty("Score").GetDouble()).Average();
+            
             students.Add(student);
         }
     }
 
-    private void FillscoresList(List<JsonElement> scores, JsonElement root1)
+    private void FillScoresList(List<JsonElement> scores, JsonElement root1)
     {
         for(int i = 0; i < root1.GetArrayLength(); i ++)
         {
@@ -63,25 +60,25 @@ class ProgramController
 
     private JsonElement CreateRoot1()
     {
-        string ScoresData;
-        using (StreamReader r = new StreamReader("scores.json"))
+        string scoresData;
+        using (StreamReader r = new StreamReader("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\scores.json"))
             {
-                ScoresData = r.ReadToEnd();
+                scoresData = r.ReadToEnd();
             }
-        JsonDocument doc1 = JsonDocument.Parse(ScoresData);
+        JsonDocument doc1 = JsonDocument.Parse(scoresData);
         Console.WriteLine(doc1);
         return doc1.RootElement;
     }
     private JsonElement CreateRoot2()
     {
-        string StudentsData;
-        using (StreamReader r = new StreamReader("students.json"))
+        string studentsData;
+        using (StreamReader r = new StreamReader("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\students.json"))
             {
-                StudentsData = r.ReadToEnd();
+                studentsData = r.ReadToEnd();
             }
         
         
-        JsonDocument doc2 = JsonDocument.Parse(StudentsData);
+        JsonDocument doc2 = JsonDocument.Parse(studentsData);
         return doc2.RootElement;
     }
 }
