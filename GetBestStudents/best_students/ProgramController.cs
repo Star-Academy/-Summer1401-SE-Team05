@@ -8,8 +8,9 @@ class ProgramController
     public void Run()
     {
         JsonElement root1 = CreateRoot1();
+        //Console.WriteLine(root1);
         JsonElement root2 = CreateRoot2();
-        _n = root2.GetArrayLength();
+        this._n = root2.GetArrayLength();
         List<Student> students = new List<Student>();
         List<JsonElement> scores = new List<JsonElement>();
         FillScoresList(scores, root1);
@@ -24,7 +25,7 @@ class ProgramController
             Console.Write(students[i].FirstName + " ");
             Console.WriteLine(students[i].LastName);
             Console.WriteLine(students[i].Avg);
-            Console.WriteLine("");
+            Console.WriteLine();
         }
     }
 
@@ -65,6 +66,7 @@ class ProgramController
                 scoresData = r.ReadToEnd();
             }
         JsonDocument doc1 = JsonDocument.Parse(scoresData);
+        Console.WriteLine(doc1);
         return doc1.RootElement;
     }
     private JsonElement CreateRoot2()
@@ -74,6 +76,7 @@ class ProgramController
             {
                 studentsData = r.ReadToEnd();
             }
+        
         
         JsonDocument doc2 = JsonDocument.Parse(studentsData);
         return doc2.RootElement;
