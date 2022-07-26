@@ -9,6 +9,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        new ProgramController().Run();
+        View view = new View();
+        StudentListCreater studentListCreater = new StudentListCreater();
+        new ProgramController(view, studentListCreater).Run();
     }
 }
