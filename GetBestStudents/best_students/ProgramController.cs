@@ -9,15 +9,12 @@ class ProgramController
     {
         JsonElement scoresElement = CreateJsonElementFromFile("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\scores.json");
         JsonElement studentsElement = CreateJsonElementFromFile("C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\students.json");
-        
         _studentCount = studentsElement.GetArrayLength();
         
         List<JsonElement> scores = CreateScoresList(scoresElement);
         List<Student> students = CreateStudentsList(studentsElement);
         students = AddStudentAverages(students, scores);
-
-        students = SortStudentsByAvg(students);
-        new View().PrintList(students.GetRange(0, 3));
+        new View().PrintList(SortStudentsByAvg(students).GetRange(0, 3));
     }
 
     private List<Student> SortStudentsByAvg(List<Student> students)
@@ -45,7 +42,6 @@ class ProgramController
 
             student.Avg = tempScores.ConvertAll(x => x.GetProperty("Score").GetDouble()).Average();
         }
-
         return students;
     }
 
