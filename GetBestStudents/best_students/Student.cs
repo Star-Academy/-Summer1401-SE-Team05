@@ -7,7 +7,9 @@ public class Student
     public string LastName {get; set;}
     public double Avg {get; set;}
 
-    public Student(int StudentNumber, string FirstName, string LastName) 
+    public Student(int StudentNumber,
+                   string FirstName,
+                   string LastName) 
     {
         this.StudentNumber = StudentNumber;
         this.FirstName = FirstName;
