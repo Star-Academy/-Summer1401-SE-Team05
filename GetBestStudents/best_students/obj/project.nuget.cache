@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "PBuSHt/QI62sQp0JEpi5pG7OlzQclZpa0nE1acxYGhtDvvidFdmEUbHMbopbULTnk3aZqBnxgJc0lOXMytQNUw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\moham\\Desktop\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\best_students.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\moham\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.text.json\\6.0.5\\system.text.json.6.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
