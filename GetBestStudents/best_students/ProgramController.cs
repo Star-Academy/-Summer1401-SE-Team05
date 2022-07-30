@@ -16,8 +16,8 @@ class ProgramController
     }
     public void Run()
     {
-        JsonElement scoresElement = CreateJsonElementFromFile("C:\\Users\\gamer\\OneDrive\\Desktop\\C#-project\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\scores.json");
-        JsonElement studentsElement = CreateJsonElementFromFile("C:\\Users\\gamer\\OneDrive\\Desktop\\C#-project\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\students.json");
+        JsonElement scoresElement = CreateJsonElementFromFile("C:\\Users\\gamer\\OneDrive\\Desktop\\C#-project\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\Resources\\scores.json");
+        JsonElement studentsElement = CreateJsonElementFromFile("C:\\Users\\gamer\\OneDrive\\Desktop\\C#-project\\Summer1401-SE-Team05\\GetBestStudents\\best_students\\Resources\\students.json");
         _studentCount = studentsElement.GetArrayLength();
         
         List<JsonElement> scores = CreateScoresList(scoresElement);
