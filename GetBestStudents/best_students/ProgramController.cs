@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DefaultNamespace;
 
 namespace BEST_STUDENTS;
 
@@ -19,9 +20,9 @@ class ProgramController
         JsonElement studentsElement = CreateJsonElementFromFile("students.json");
         _studentCount = studentsElement.GetArrayLength();
         
-        List<JsonElement> scores = CreateScoresList(scoresElement);
+        List<Grade> grades = CreateScoresList(scoresElement);
         List<Student> students = _studentListCreater.CreateStudentsList(studentsElement, _studentCount);
-        students = _studentListCreater.AddStudentAverages(students, scores);
+        students = _studentListCreater.AddStudentAverages(students, grades);
         _view.PrintList(SortStudentsByAvg(students).GetRange(0, 3));
     }
 
@@ -30,16 +31,16 @@ class ProgramController
         return students.OrderByDescending(o=>o.Avg).ToList();
     }
 
-    private List<JsonElement> CreateScoresList(JsonElement root1)
+    private List<Grade> CreateScoresList(JsonElement root1)
     {
-        List<JsonElement> scores = new List<JsonElement>();
+        List<Grade> grades = new List<Grade>();
         
         for(int i = 0; i < root1.GetArrayLength(); i ++)
         {
-            scores.Add(root1[i]);
+            grades.Add(new Grade(root1[i]));
         }
 
-        return scores;
+        return grades;
     }
 
     private JsonElement CreateJsonElementFromFile(string path)

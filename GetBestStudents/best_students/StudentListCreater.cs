@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using DefaultNamespace;
 
 namespace BEST_STUDENTS;
 
@@ -15,14 +16,14 @@ public class StudentListCreater
         return students;
     }
 
-    public List<Student> AddStudentAverages(List<Student> students, List<JsonElement> scores)
+    public List<Student> AddStudentAverages(List<Student> students, List<Grade> grades)
     {
         foreach (var student in students)
         {
-            List<JsonElement> tempScores = new List<JsonElement>(scores
+            List<Grade> tempScores = new List<Grade>(grades
                 .Where(x => student.ScoreIsForStudent(x)));
 
-            student.Avg = tempScores.ConvertAll(x => x.GetProperty("Score").GetDouble()).Average();
+            student.Avg = tempScores.ConvertAll(x => x.Score).Average();
         }
         return students;
     }

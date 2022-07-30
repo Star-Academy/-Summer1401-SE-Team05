@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DefaultNamespace;
 
 namespace BEST_STUDENTS;
 
@@ -11,9 +12,9 @@ public class Student
 
     public Student(int studentNumber, string firstName, string lastName) 
     {
-        this.StudentNumber = studentNumber;
-        this.FirstName = firstName;
-        this.LastName = lastName;
+        StudentNumber = studentNumber;
+        FirstName = firstName;
+        LastName = lastName;
     }
 
     public Student(JsonElement studentElement)
@@ -23,13 +24,13 @@ public class Student
         LastName = studentElement.GetProperty("LastName").GetString();
     }
 
-    public bool ScoreIsForStudent(JsonElement score)
+    public bool ScoreIsForStudent(Grade grade)
     {
-        return score.GetProperty("StudentNumber").GetInt32() == StudentNumber;
+        return grade.StudentNumber == StudentNumber;
     }
     
     public override string ToString()
     {
-        return $"{FirstName} {LastName} {StudentNumber}: \n {Avg}";
+        return $"{FirstName} {LastName}: \n {Avg}";
     }
 }
