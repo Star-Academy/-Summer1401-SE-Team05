@@ -4,7 +4,6 @@ namespace BEST_STUDENTS;
 
 class ProgramController
 {
-
     private View _view;
     private StudentListCreater _studentListCreater;
     private int _studentCount;
