@@ -1,43 +1,38 @@
 import java.util.ArrayList;
 
 public class ProgramController {
-    private static ProgramController single_instance;
-    public static ProgramController getInstance()
-    {
-        if (single_instance == null)
-            single_instance = new ProgramController();
+    private final CheckersAndOperators checkerOperator = new CheckersAndOperators();
 
-        return single_instance;
-    }
-    public void init() {
-        InvertedIndex.getInstance().showFiles(FileReader.getInstance().readFiles());
+   public void init() {
+        InvertedIndex.getInstance().showFiles(checkerOperator.fileReader.readFiles());
     }
 
-    public static void endIfSomeNormalWordHasNothing() {
-        for (String normalWord : WordContainer.getInstance().normalWords) {
+    public void endIfSomeNormalWordHasNothing(WordContainer wordContainer) {
+        for (String normalWord : wordContainer.normalWords) {
             if (!InvertedIndex.getInstance().wordToDocumentMap.containsKey(normalWord)){
-                IOOperations.getInstance().endProgramWithNothing();
+                checkerOperator.ioOperations.endProgramWithNothing();
             }
         }
     }
 
-    public static void printFinalAnswer(ArrayList<String> checkedDocuments){
+    public void printFinalAnswer(ArrayList<String> checkedDocuments){
 
         if (checkedDocuments.isEmpty()){
-            IOOperations.getInstance().endProgramWithNothing();
+            checkerOperator.ioOperations.endProgramWithNothing();
         }
 
-        IOOperations.getInstance().printDocuments(checkedDocuments);
+        checkerOperator.ioOperations.printDocuments(checkedDocuments);
     }
 
     public void run() {
-        String words = IOOperations.getInstance().getLine().toUpperCase();
+        String words = checkerOperator.ioOperations.getLine().toUpperCase();
         String[] wordsToFind = words.split("\\s");
 
+        WordContainer wordContainer = new WordContainer();
         init();
-        WordOperator.getInstance().operate(wordsToFind);
-        endIfSomeNormalWordHasNothing();
-        ArrayList<String> checkedDocuments = DocumentChecker.getInstance().check();
+        checkerOperator.wordOperator.operate(wordsToFind, wordContainer);
+        endIfSomeNormalWordHasNothing(wordContainer);
+        ArrayList<String> checkedDocuments = checkerOperator.documentChecker.getValidDocuments(wordContainer, checkerOperator);
         printFinalAnswer(checkedDocuments);
     }
 }

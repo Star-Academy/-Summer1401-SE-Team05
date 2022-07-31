@@ -2,14 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class IOOperations {
-    private static IOOperations single_instance;
-    public static IOOperations getInstance()
-    {
-        if (single_instance == null)
-            single_instance = new IOOperations();
-
-        return single_instance;
-    }
     public Scanner scanner = new Scanner(System.in);
 
     public void endProgramWithNothing() {

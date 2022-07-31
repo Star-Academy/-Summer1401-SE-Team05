@@ -2,32 +2,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DocumentChecker {
-    private static DocumentChecker single_instance;
-    public static DocumentChecker getInstance()
-    {
-        if (single_instance == null)
-            single_instance = new DocumentChecker();
 
-        return single_instance;
-    }
-
-    public ArrayList<String> getDocumentsWithPlusWords() {
+    public ArrayList<String> getDocumentsWithPlusWords(WordContainer wordContainer) {
         ArrayList<String> documentsWithPlusWords = new ArrayList<>();
-        for (String word : WordContainer.getInstance().plusWords)
+        for (String word : wordContainer.plusWords)
             documentsWithPlusWords.addAll(InvertedIndex.getInstance().wordToDocumentMap.get(word));
         return documentsWithPlusWords;
     }
 
-    public ArrayList<String> getDocumentsWithMinusWords() {
+    public ArrayList<String> getDocumentsWithMinusWords(WordContainer wordContainer) {
         ArrayList<String> documentsWithMinusWords = new ArrayList<>();
-        for (String word : WordContainer.getInstance().minusWords) {
+        for (String word : wordContainer.minusWords) {
             documentsWithMinusWords.addAll(InvertedIndex.getInstance().wordToDocumentMap.get(word));
         }
         return documentsWithMinusWords;
     }
 
-    public boolean checkNormalWords(String documentName) {
-        for (String normalWord : WordContainer.getInstance().normalWords) {
+    public boolean doesNotContainAllNormalWords(String documentName, WordContainer wordContainer) {
+        for (String normalWord : wordContainer.normalWords) {
             if (!documentContainsWord(normalWord, documentName)) {
                 return true;
             }
@@ -47,32 +39,32 @@ public class DocumentChecker {
     }
 
 
-    public boolean checkMinusWords(ArrayList<String> minusWords, String documentName) {
+    public boolean containsAtLeastOneMinusWord(ArrayList<String> minusWords, String documentName) {
 
         return minusWords.contains(documentName);
 
     }
 
 
-    public boolean checkPlusWords(String documentName) {
-        return (!getDocumentsWithPlusWords().isEmpty() &&
-                checkIfContainsPlusWords(getDocumentsWithPlusWords(), documentName));
+    public boolean doesNotContainAtLeastOnePlusWord(String documentName, WordContainer wordContainer) {
+        return (!getDocumentsWithPlusWords(wordContainer).isEmpty() &&
+                checkIfContainsPlusWords(getDocumentsWithPlusWords(wordContainer), documentName));
     }
-    public ArrayList<String> remove(ArrayList<String> documentNames) {
+    public ArrayList<String> remove(ArrayList<String> documentNames, WordContainer wordContainer) {
 
         documentNames.removeIf(documentName ->
-                checkNormalWords(documentName) ||
-                checkPlusWords(documentName) ||
-                checkMinusWords(getDocumentsWithMinusWords(), documentName));
+                doesNotContainAllNormalWords(documentName, wordContainer) ||
+                doesNotContainAtLeastOnePlusWord(documentName, wordContainer) ||
+                containsAtLeastOneMinusWord(getDocumentsWithMinusWords(wordContainer), documentName));
 
         return documentNames;
     }
 
-    public ArrayList<String> check() {
-        ArrayList<String> documentNames = FileReader.getInstance().getFileNames();
-
-        ArrayList<String> checkedDocuments = remove(documentNames);
-        Collections.sort(checkedDocuments);
-        return checkedDocuments;
+    //a valid document is a document that contains all normal words, at least on plus word and no minus words
+    public ArrayList<String> getValidDocuments(WordContainer wordContainer, CheckersAndOperators checkerOperator) {
+        ArrayList<String> documentNames = checkerOperator.fileReader.getFileNames();
+        ArrayList<String> validDocuments = remove(documentNames, wordContainer);
+        Collections.sort(validDocuments);
+        return validDocuments;
     }
 }

@@ -7,15 +7,8 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class FileReader {
-    private static FileReader single_instance;
-    public static FileReader getInstance()
-    {
-        if (single_instance == null)
-            single_instance = new FileReader();
 
-        return single_instance;
-    }
-    public String path = "C:\\Users\\gamer\\OneDrive\\Desktop\\InvertedIndex\\Resources";
+    private final String path = "Resources";
     public ArrayList<String> fileNames = new ArrayList<>();
     public String getFileContent(File file){
         try {
