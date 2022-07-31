@@ -15,10 +15,4 @@ public class Grade
         StudentNumber = studentNumber;
     }
 
-    public Grade(JsonElement jsonElement)
-    {
-        Lesson = jsonElement.GetProperty("Lesson").GetString();
-        StudentNumber = jsonElement.GetProperty("StudentNumber").GetInt32();
-        Score = jsonElement.GetProperty("Score").GetDouble();
-    }
 }

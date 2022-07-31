@@ -5,15 +5,10 @@ namespace BEST_STUDENTS;
 
 public class StudentListCreater
 {
-    public List<Student> CreateStudentsList(JsonElement studentRoot, int studentCount)
+    public List<Student> CreateStudentsList(string studentData)
     {
-        List<Student> students = new List<Student>();
-        for(int i = 0; i < studentCount; i++)
-        {
-            students.Add(new Student(studentRoot[i]));
-        }
+        return JsonSerializer.Deserialize<List<Student>>(studentData);
 
-        return students;
     }
 
     public List<Student> AddStudentAverages(List<Student> students, List<Grade> grades)

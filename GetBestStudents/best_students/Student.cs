@@ -17,13 +17,6 @@ public class Student
         LastName = lastName;
     }
 
-    public Student(JsonElement studentElement)
-    {
-        StudentNumber = studentElement.GetProperty("StudentNumber").GetInt32();
-        FirstName = studentElement.GetProperty("FirstName").GetString();
-        LastName = studentElement.GetProperty("LastName").GetString();
-    }
-
     public bool ScoreIsForStudent(Grade grade)
     {
         return grade.StudentNumber == StudentNumber;

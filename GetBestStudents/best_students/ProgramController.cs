@@ -7,7 +7,6 @@ class ProgramController
 {
     private View _view;
     private StudentListCreater _studentListCreater;
-    private int _studentCount;
 
     public ProgramController(View view, StudentListCreater studentListCreater)
     {
@@ -16,42 +15,25 @@ class ProgramController
     }
     public void Run()
     {
-        JsonElement scoresElement = CreateJsonElementFromFile("scores.json");
-        JsonElement studentsElement = CreateJsonElementFromFile("students.json");
-        _studentCount = studentsElement.GetArrayLength();
+        string scoresData = getDataAtPath("scores.json");
+        string studentsData = getDataAtPath("students.json");
         
-        List<Grade> grades = CreateScoresList(scoresElement);
-        List<Student> students = _studentListCreater.CreateStudentsList(studentsElement, _studentCount);
+        List<Grade> grades = CreateScoresList(scoresData);
+        List<Student> students = _studentListCreater.CreateStudentsList(studentsData);
         students = _studentListCreater.AddStudentAverages(students, grades);
-        _view.PrintList(SortStudentsByAvg(students).GetRange(0, 3));
+        _view.PrintList(students.OrderByDescending(o=>o.Avg).ToList().Take(3));
     }
 
-    private List<Student> SortStudentsByAvg(List<Student> students)
+    private List<Grade> CreateScoresList(string scoreData)
     {
-        return students.OrderByDescending(o=>o.Avg).ToList();
+        return JsonSerializer.Deserialize<List<Grade>>(scoreData);
     }
 
-    private List<Grade> CreateScoresList(JsonElement root1)
+    private string getDataAtPath(string path)
     {
-        List<Grade> grades = new List<Grade>();
-        
-        for(int i = 0; i < root1.GetArrayLength(); i ++)
-        {
-            grades.Add(new Grade(root1[i]));
-        }
-
-        return grades;
-    }
-
-    private JsonElement CreateJsonElementFromFile(string path)
-    {
-        string scoresData;
-        using (StreamReader r = new StreamReader(path))
-        {
-            scoresData = r.ReadToEnd();
-        }
-        JsonDocument doc1 = JsonDocument.Parse(scoresData);
-        return doc1.RootElement;
+        string data;
+        StreamReader r = new StreamReader(path);
+        return r.ReadToEnd();
     }
     
 }
