@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8572c1e0-2e19-4c10-aadb-c89695c581b7" name="Changes" comment="refactor&#10;add to ignore" />
+    <list default="true" id="8572c1e0-2e19-4c10-aadb-c89695c581b7" name="Changes" comment="refactor&#10;add to ignore">
+      <change beforePath="$PROJECT_DIR$/../phase5/.idea/.idea.SampleLibrary/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../phase5/.idea/.idea.SampleLibrary/.idea/indexLayout.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +22,7 @@
         <entry key="$PROJECT_DIR$" value="688606e3719c4d491aa52215e42c0d7d21654ac6" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -31,14 +33,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/gamer/OneDrive/Desktop/phase 5/Summer1401-SE-Team05/Phase1_phase2",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -81,6 +84,7 @@
       <workItem from="1659266253299" duration="44000" />
       <workItem from="1659266323656" duration="90000" />
       <workItem from="1659266435497" duration="36000" />
+      <workItem from="1659343126315" duration="260000" />
     </task>
     <task id="LOCAL-00001" summary="refactor&#10;add to ignore">
       <created>1658844058731</created>
