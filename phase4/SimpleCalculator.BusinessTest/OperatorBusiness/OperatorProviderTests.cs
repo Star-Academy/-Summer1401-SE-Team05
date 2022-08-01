@@ -22,14 +22,4 @@ public class OperatorProviderTests
         result.Should().BeOfType(type);
     }
 
-    // [Fact]
-    // public void Test_nullException()
-    // {
-    //     //Arrange
-    //     OperatorProvider operatorProvider = new OperatorProvider();
-    //     //Act
-    //     var result = operatorProvider.GetOperator(null);
-    //     //Assert
-    //     result.Should().BeOfType(type);
-    // }
 }
