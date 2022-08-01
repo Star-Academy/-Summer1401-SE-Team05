@@ -16,7 +16,7 @@ public class PlusWordHandlerTest
     public void PlusWordHandlerTest_ContainsPlusWord()
     {
         //arrange
-        var handler = new PlusWordHandler();
+        var handler = new PlusWordSeparator();
         
         //act
         var result = handler.Separate(AllWords);
@@ -31,7 +31,7 @@ public class PlusWordHandlerTest
     public void PlusWordHandlerTest_noPlusWordsInList()
     {
         //arrange
-        var handler = new PlusWordHandler();
+        var handler = new PlusWordSeparator();
 
         //act
         var result = handler.Separate(RegWords);

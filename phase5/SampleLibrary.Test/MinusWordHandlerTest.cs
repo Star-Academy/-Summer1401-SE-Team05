@@ -15,7 +15,7 @@ public class MinusWordHandlerTest
     public void MinusWordHandlerTest_ContainsMinusWord()
     {
         //arrange
-        var handler = new MinusWordHandler();
+        var handler = new MinusWordSeperator();
         
         //act
         var result = handler.Separate(AllWords);
@@ -30,7 +30,7 @@ public class MinusWordHandlerTest
     public void MinusWordHandlerTest_NoMinusWordsInList()
     {
         //arrange
-        var handler = new MinusWordHandler();
+        var handler = new MinusWordSeperator();
 
         //act
         var result = handler.Separate(RegWords);

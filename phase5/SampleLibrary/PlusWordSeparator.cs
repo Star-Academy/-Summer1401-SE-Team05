@@ -1,7 +1,7 @@
 
 namespace SampleLibrary;
 
-public class PlusWordHandler : AbstractSeparator
+public class PlusWordSeparator : AbstractSeparator
 {
     public List<string> Separate(List<string> toSeparate)
     {
