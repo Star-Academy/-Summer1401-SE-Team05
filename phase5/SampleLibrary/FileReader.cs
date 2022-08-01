@@ -4,9 +4,15 @@ public class FileReader
 {
     private readonly String path = "Resources";
     public List<String> fileNames = new ();
-    public String getFileContent(string s)
+    public String getFileContent(string path)
     {
-        return default;
+        string content;
+        using (StreamReader r = new StreamReader(path))
+        {
+            content = r.ReadToEnd();
+        }
+
+        return content;
     }
     
     public Dictionary<String, String> readFiles()
