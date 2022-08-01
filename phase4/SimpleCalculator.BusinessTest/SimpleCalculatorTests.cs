@@ -17,15 +17,14 @@ public class SimpleCalculatorTests
     }
 
     [Theory]
-    [InlineData(1, 2, 3)]
-    public void Calculate_true_Answer(int first, int second, int expected)
+    [InlineData(1, 2, 4, OperatorEnum.sum)]
+    public void Calculate_true_Answer(int first, int second, int expected, OperatorEnum operatorType)
     {
         //Arrange
         Calculator calculator = new Calculator(_operatorProvider);
-        var operatorType = OperatorEnum.sum;
         var mockedOperator = Substitute.For<IOperator>();
-        mockedOperator.Calculate(Arg.Any<int>(), Arg.Any<int>()).Returns(expected);
-        _operatorProvider.GetOperator(Arg.Any<OperatorEnum>()).Returns(mockedOperator);
+        mockedOperator.Calculate(Arg.Is(first), Arg.Is(second)).Returns(expected);
+        _operatorProvider.GetOperator(Arg.Is(operatorType)).Returns(mockedOperator);
         //Act
         var result = calculator.Calculate(first, second, operatorType);
 
