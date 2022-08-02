@@ -1,22 +1,26 @@
 namespace SampleLibrary;
 
-public class InvertedIndex
+public class InvertedIndex : IInvertedIndex
 {
+
+    public Dictionary<string, List<string>> WordToDocumentMap { get; } = new ();
     public static InvertedIndex getInstance()
     {
         return default;
     }
-    public Dictionary<String, List<String>> WordToDocumentMap { get; set; } = new ();
-
-    public String[] wordSplitter(Dictionary<String, List<String>>.KeyCollection file)
+    
+    public string[] wordSplitter(Dictionary<string, List<string>>.KeyCollection file)
     {
         return default;
     }
 
-    public void makeWordToDocumentMap(String[] words, String fileName) {
+    public void makeWordToDocumentMap(string[] words, string fileName) 
+    {
         
     }
-    public void showFiles(Dictionary<String, String> fileNameToContent) {
+    public void showFiles(Dictionary<string, string> fileNameToContent) 
+    {
         
     }
+
 }
