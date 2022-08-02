@@ -29,14 +29,17 @@ public class DocumentChecker
     }
 
 
-    public List<string> remove(List<string> documentNames, WordContainer wordContainer) 
-    {
-        return default;
-    }
-
     //a valid document is a document that contains all normal words, at least on plus word and no minus words
-    public List<string> getValidDocuments(WordContainer wordContainer, CheckersAndOperators checkerOperator, IInvertedIndex invertedIndex) {
+    public List<string> GetValidDocuments(WordContainer wordContainer, IInvertedIndex invertedIndex)
+    {
+        var documentsWithAtLeastOneMinusWord = GetDocumentsWithAtLeastOneWord(wordContainer.MinusWords, invertedIndex);
+        var haveMinusWords = documentsWithAtLeastOneMinusWord.Count != 0;
+        var documentsWithAtLeastOnePlusWord =
+            GetDocumentsWithAtLeastOneWord(wordContainer.PlusWords, invertedIndex);
+        var havePlusWords = documentsWithAtLeastOnePlusWord.Count != 0;
         
-        return default;
+        return GetDocumentsWithAllWords(wordContainer.NormalWords, invertedIndex)
+            .Where(x => !havePlusWords || documentsWithAtLeastOnePlusWord.Contains(x))
+            .Where(x => !haveMinusWords || !documentsWithAtLeastOneMinusWord.Contains(x)).ToList();
     }
 }
