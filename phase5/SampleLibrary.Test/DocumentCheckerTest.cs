@@ -57,12 +57,12 @@ public class DocumentCheckerTest
     public void DocumentContainsWordTest(string word, string documentName, bool expected)
     {
         //arrange
-        DocumentChecker documentChecker = new();
         var invertedIndex = Substitute.For<IInvertedIndex>();
         invertedIndex.WordToDocumentMap.Returns(_testIndex);
+        DocumentChecker documentChecker = new(invertedIndex);
 
         //act
-        var result = documentChecker.DocumentContainsWord(word, documentName, invertedIndex);
+        var result = documentChecker.DocumentContainsWord(word, documentName);
 
         //assert
         result.Should().Be(expected);
@@ -73,12 +73,12 @@ public class DocumentCheckerTest
     public void GetDocumentsWithAtLeastOneWordTest(List<string> words, List<string> expected)
     {
         //arrange
-        DocumentChecker documentChecker = new();
         var invertedIndex = Substitute.For<IInvertedIndex>();
         invertedIndex.WordToDocumentMap.Returns(_testIndex);
+        DocumentChecker documentChecker = new(invertedIndex);
         
         //act
-        var result = documentChecker.GetDocumentsWithAtLeastOneWord(words, invertedIndex);
+        var result = documentChecker.GetDocumentsWithAtLeastOneWord(words);
 
         //assert
         result.Should().BeEquivalentTo(expected);
@@ -91,12 +91,12 @@ public class DocumentCheckerTest
     public void GetDocumentsWithAllWordsTest(List<string> words, List<string> expected)
     {
         //arrange
-        DocumentChecker documentChecker = new();
         var invertedIndex = Substitute.For<IInvertedIndex>();
         invertedIndex.WordToDocumentMap.Returns(_testIndex);
-        
+        DocumentChecker documentChecker = new(invertedIndex);
+
         //act
-        var result = documentChecker.GetDocumentsWithAllWords(words, invertedIndex);
+        var result = documentChecker.GetDocumentsWithAllWords(words);
 
         //assert
         result.Should().BeEquivalentTo(expected);
@@ -106,15 +106,15 @@ public class DocumentCheckerTest
     public void GetValidDocumentsTest_noNormalWords()
     {
         //arrange
-        var documentChecker = new DocumentChecker();
         var container = new WordContainer(new List<string>(),
             new List<string> {"here", "there"},
             new List<string>{"hi"});
         var invertedIndex = Substitute.For<IInvertedIndex>();
         invertedIndex.WordToDocumentMap.Returns(_testIndex);
+        DocumentChecker documentChecker = new(invertedIndex);
 
         //act
-        var result = documentChecker.GetValidDocuments(container, invertedIndex);
+        var result = documentChecker.GetValidDocuments(container);
         
         //assert
         result.Should().BeEquivalentTo(new List<string>());
@@ -126,13 +126,13 @@ public class DocumentCheckerTest
     public void GetValidDocumentsTest_AllTypesOfWords(List<string> normal, List<string> plus ,List<string> minus ,List<string> expected)
     {
         //arrange
-        var documentChecker = new DocumentChecker();
         var container = new WordContainer(normal, plus, minus);
         var invertedIndex = Substitute.For<IInvertedIndex>();
         invertedIndex.WordToDocumentMap.Returns(_testIndex);
+        DocumentChecker documentChecker = new(invertedIndex);
 
         //act
-        var result = documentChecker.GetValidDocuments(container, invertedIndex);
+        var result = documentChecker.GetValidDocuments(container);
         
         //assert
         result.Should().BeEquivalentTo(expected);
