@@ -10,7 +10,7 @@ public class SumOperatorTests
     [InlineData(3, 4, 7)]
     [InlineData(-45, 111, 66)]
     [InlineData(int.MaxValue, 1, int.MinValue)]
-    public void Test_sumCalculate(int first, int second, int expected)
+    public void SumOperator_AddNumbers_ReturnAdditionResult(int first, int second, int expected)
     {
         //Arrange
         SumOperator sumOperator = new SumOperator();

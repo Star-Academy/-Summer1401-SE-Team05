@@ -12,7 +12,7 @@ public class OperatorProviderTests
     [InlineData(OperatorEnum.division, typeof(DivisionOperator))]
     [InlineData(OperatorEnum.sub, typeof(SubOperator))]
     [InlineData(OperatorEnum.multiply, typeof(MultiplyOperator))]
-    public void Test_OperatorProvider_ReturnsCorrectOperator(OperatorEnum operatorType, Type type)
+    public void OperatorProviding_GetCorrectOperator_ReturnEnumsOperator(OperatorEnum operatorType, Type type)
     {
         //Arrange
         OperatorProvider operatorProvider = new OperatorProvider();

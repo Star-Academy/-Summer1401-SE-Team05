@@ -10,7 +10,7 @@ public class DivisionOperatorTests
     [InlineData(3, 4, 3/4)]
     [InlineData(-45, 111, -45/111)]
     [InlineData(int.MaxValue, 1, int.MaxValue)]
-    public void Test_DivideCalculate(int first, int second, int expected)
+    public void DivisionOperator_DivideNumbers_ReturnDividedResult(int first, int second, int expected)
     {
         //Arrange
         DivisionOperator divideOperator = new DivisionOperator();
@@ -23,7 +23,7 @@ public class DivisionOperatorTests
     [Theory]
     [InlineData(3, 0)]
     [InlineData(0, 0)]
-    public void Test_DivisionByZero(int first, int second)
+    public void DivisionOperator_DivideByZero_ThrowDivideByZeroException(int first, int second)
     {
         //Arrange
         DivisionOperator divideOperator = new DivisionOperator();

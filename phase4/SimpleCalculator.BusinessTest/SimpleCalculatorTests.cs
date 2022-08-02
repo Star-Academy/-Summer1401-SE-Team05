@@ -18,7 +18,7 @@ public class SimpleCalculatorTests
 
     [Theory]
     [InlineData(1, 2, 4, OperatorEnum.sum)]
-    public void Calculate_true_Answer(int first, int second, int expected, OperatorEnum operatorType)
+    public void SimpleCalculatorCalculate_CalculateAnswerCorrectly_AddNumbers(int first, int second, int expected, OperatorEnum operatorType)
     {
         //Arrange
         Calculator calculator = new Calculator(_operatorProvider);

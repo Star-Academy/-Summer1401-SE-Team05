@@ -13,7 +13,7 @@ public class SubOperatorTests
     [InlineData(3, 4, -1)]
     [InlineData(-45, 111, -156)]
     [InlineData(int.MaxValue, -1, int.MinValue)]
-    public void Test_subCalculate(int first, int second, int expected)
+    public void SubOperator_SubtractNumbers_ReturnSubtractionResult(int first, int second, int expected)
     {
         //Arrange
         SubOperator subOperator = new SubOperator();
