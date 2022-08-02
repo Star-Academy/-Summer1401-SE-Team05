@@ -2,8 +2,8 @@ namespace SampleLibrary;
 
 public class FileReader
 {
-    private readonly String path = "Resources";
-    public List<String> fileNames = new ();
+    private readonly String _path = "C:\\Users\\gamer\\OneDrive\\Desktop\\phase 5\\Summer1401-SE-Team05\\phase5\\SampleLibrary.Test\\testResources";
+    public List<string?> _fileNames = new ();
     public String getFileContent(string path)
     {
         string content;
@@ -15,12 +15,20 @@ public class FileReader
         return content;
     }
     
-    public Dictionary<String, String> readFiles()
+    public Dictionary<string, string> ReadFiles()
     {
-        return default;
+        Dictionary<string, string> fileNameToContent = new Dictionary<string, string>();
+        foreach (string file in Directory.GetFiles(_path, "*.txt"))
+        {
+            string content = File.ReadAllText(file).ToUpper();
+            string filename = Path.GetFileName(file);
+            fileNameToContent.Add(filename, content);
+            _fileNames.Add(filename);
+        }
+        return fileNameToContent;
     }
 
-    public List<string> getFileNames(){
-        return default;
+    public List<string?> GetFileNames(){
+        return _fileNames;
     }
 }
