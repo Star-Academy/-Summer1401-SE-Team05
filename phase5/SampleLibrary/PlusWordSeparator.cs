@@ -1,8 +1,10 @@
 
 namespace SampleLibrary;
 
-public class PlusWordSeparator : AbstractSeparator
+public class PlusWordSeparator : ISeparator
 {
+    public List<string> Words { get; set; } = new ();
+
     public List<string> Separate(List<string> toSeparate)
     {
         Words = Words.Concat(toSeparate.Where(x => x.StartsWith("+"))

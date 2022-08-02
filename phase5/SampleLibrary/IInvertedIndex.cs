@@ -8,7 +8,6 @@ public interface IInvertedIndex
 
     public void showFiles(Dictionary<string, string> fileNameToContent);
 
-    public string[] wordSplitter(Dictionary<string, List<string>>.KeyCollection file);
     
 
 }
