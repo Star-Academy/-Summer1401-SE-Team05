@@ -30,11 +30,11 @@ public class DocumentChecker
     }
 
 
-    public bool GetDocumentsThatContainAtLeastOneWord(List<string> words, string documentName, InvertedIndex invertedIndex)
+    public List<string> GetDocumentsWithAtLeastOneWord(List<string> words, InvertedIndex invertedIndex)
     {
 
-        return default;
-
+        return words.SelectMany(x => invertedIndex.WordToDocumentMap[x]).Distinct().ToList();
+        
     }
 
 

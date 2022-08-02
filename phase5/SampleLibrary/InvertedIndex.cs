@@ -6,7 +6,7 @@ public class InvertedIndex
     {
         return default;
     }
-    public Dictionary<String, List<String>> wordToDocumentMap = new ();
+    public Dictionary<String, List<String>> WordToDocumentMap { get; set; } = new ();
 
     public String[] wordSplitter(Dictionary<String, List<String>>.KeyCollection file)
     {
