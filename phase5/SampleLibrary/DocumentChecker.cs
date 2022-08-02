@@ -2,39 +2,30 @@ namespace SampleLibrary;
 
 public class DocumentChecker
 {
-    public List<string> GetDocumentsWithPlusWords(WordContainer wordContainer, InvertedIndex invertedIndex)
+    
+    public List<string> GetDocumentsWithAllWords(List<string> words, IInvertedIndex invertedIndex)
     {
+        if (words.Count == 0)
+        {
+            return new List<string>();
+        }
         
-        
-        return default;
+        var documents = invertedIndex.WordToDocumentMap[words[0]];
+        foreach (var word in words)
+        {
+            documents = documents.Where(x => invertedIndex.WordToDocumentMap[word].Contains(x)).ToList();
+        }
+        return documents;
     }
 
-    public List<string> GetDocumentsWithMinusWords(WordContainer wordContainer, InvertedIndex invertedIndex) 
+    public bool DocumentContainsWord(string word, string documentName, IInvertedIndex invertedIndex)
     {
-        return default;
+        return invertedIndex.WordToDocumentMap[word].Contains(documentName);
     }
-
-    public bool DoesNotContainAllNormalWords(string documentName, WordContainer wordContainer, InvertedIndex invertedIndex) {
-        return default;
-    }
-
-    public bool DocumentContainsWord(string word, string documentName, InvertedIndex invertedIndex)
+    
+    public List<string> GetDocumentsWithAtLeastOneWord(List<string> words, IInvertedIndex invertedIndex)
     {
-        return default;
-    }
-
-    public bool checkIfContainsPlusWords(List<string> plusWords, string documentName, InvertedIndex invertedIndex) {
-
-        return default;
-
-    }
-
-
-    public List<string> GetDocumentsWithAtLeastOneWord(List<string> words, InvertedIndex invertedIndex)
-    {
-
         return words.SelectMany(x => invertedIndex.WordToDocumentMap[x]).Distinct().ToList();
-        
     }
 
 
@@ -44,7 +35,7 @@ public class DocumentChecker
     }
 
     //a valid document is a document that contains all normal words, at least on plus word and no minus words
-    public List<string> getValidDocuments(WordContainer wordContainer, CheckersAndOperators checkerOperator, InvertedIndex invertedIndex) {
+    public List<string> getValidDocuments(WordContainer wordContainer, CheckersAndOperators checkerOperator, IInvertedIndex invertedIndex) {
         
         return default;
     }
