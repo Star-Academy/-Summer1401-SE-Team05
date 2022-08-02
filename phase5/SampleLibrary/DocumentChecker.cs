@@ -2,33 +2,35 @@ namespace SampleLibrary;
 
 public class DocumentChecker
 {
-    public List<string> getDocumentsWithPlusWords(WordContainer wordContainer)
+    public List<string> GetDocumentsWithPlusWords(WordContainer wordContainer, InvertedIndex invertedIndex)
     {
-        return null;
-    }
-
-    public List<string> getDocumentsWithMinusWords(WordContainer wordContainer) 
-    {
+        
+        
         return default;
     }
 
-    public bool doesNotContainAllNormalWords(string documentName, WordContainer wordContainer) {
-        return default;
-    }
-
-    public bool documentContainsWord(string word, string documentName)
+    public List<string> GetDocumentsWithMinusWords(WordContainer wordContainer, InvertedIndex invertedIndex) 
     {
         return default;
     }
 
-    public bool checkIfContainsPlusWords(List<string> plusWords, string documentName) {
+    public bool DoesNotContainAllNormalWords(string documentName, WordContainer wordContainer, InvertedIndex invertedIndex) {
+        return default;
+    }
+
+    public bool DocumentContainsWord(string word, string documentName, InvertedIndex invertedIndex)
+    {
+        return default;
+    }
+
+    public bool checkIfContainsPlusWords(List<string> plusWords, string documentName, InvertedIndex invertedIndex) {
 
         return default;
 
     }
 
 
-    public bool containsAtLeastOneMinusWord(List<string> minusWords, string documentName)
+    public bool GetDocumentsThatContainAtLeastOneWord(List<string> words, string documentName, InvertedIndex invertedIndex)
     {
 
         return default;
@@ -36,17 +38,13 @@ public class DocumentChecker
     }
 
 
-    public bool doesNotContainAtLeastOnePlusWord(string documentName, WordContainer wordContainer)
-    {
-        return default;
-    }
     public List<string> remove(List<string> documentNames, WordContainer wordContainer) 
     {
         return default;
     }
 
     //a valid document is a document that contains all normal words, at least on plus word and no minus words
-    public List<string> getValidDocuments(WordContainer wordContainer, CheckersAndOperators checkerOperator) {
+    public List<string> getValidDocuments(WordContainer wordContainer, CheckersAndOperators checkerOperator, InvertedIndex invertedIndex) {
         
         return default;
     }

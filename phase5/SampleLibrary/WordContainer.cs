@@ -2,10 +2,8 @@ namespace SampleLibrary;
 
 public class WordContainer
 {
+    public List<string> PlusWords { get; } = new ();
+    public List<string> MinusWords { get; } = new ();
+    public List<string> NormalWords { get; } = new ();
     
-
-    public List<String> plusWords = new ();
-    public List<String> minusWords = new ();
-    public List<String> normalWords = new ();
-
 }
