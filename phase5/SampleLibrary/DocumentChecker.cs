@@ -12,11 +12,14 @@ public class DocumentChecker
     public List<string> GetDocumentsWithAllWords(List<string> words)
     {
         if (words.Count == 0)
+
         {
             return new List<string>();
         }
+
         var documents = invertedIndex.WordToDocumentMap[words[0]];
         foreach (var word in words)
+        
         {
             documents = documents.Where(x => invertedIndex.WordToDocumentMap[word].Contains(x)).ToList();
         }
