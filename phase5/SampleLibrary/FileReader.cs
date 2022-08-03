@@ -2,7 +2,7 @@ namespace SampleLibrary;
 
 public class FileReader
 {
-    private readonly String _path = "Resources";
+    private readonly String _path = "..\\..\\..\\..\\SampleLibrary\\Resources";
     public List<string?> _fileNames = new ();
     public String getFileContent(string path)
     {

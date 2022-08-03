@@ -2,11 +2,12 @@ using FluentAssertions;
 
 namespace SampleLibrary.Test;
 
+
 public class FileReaderTest
 {
 
     public string path =
-        "testResources";
+        "..\\..\\..\\testResources";
     
     [Theory]
     [InlineData("for the sake of testing this program we will be using four test texts meant to test the different types of searching we are supposed to have")]
