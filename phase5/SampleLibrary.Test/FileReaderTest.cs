@@ -6,7 +6,7 @@ public class FileReaderTest
 {
 
     public string path =
-        "C:\\Users\\gamer\\OneDrive\\Desktop\\phase 5\\Summer1401-SE-Team05\\phase5\\SampleLibrary.Test\\testResources";
+        "testResources";
     
     [Theory]
     [InlineData("for the sake of testing this program we will be using four test texts meant to test the different types of searching we are supposed to have")]
