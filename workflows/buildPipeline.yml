@@ -20,12 +20,12 @@ steps:
 
 - name: Install dependencies
   run: dotnet restore
-  working-directory: C:\Users\moham\Desktop\Summer1401-SE-Team05\phase5\SampleLibrary.sln.DotSettings.user
+  working-directory: phase5
 
 - name: Build
   run: dotnet build --configuration Release --no-restore
-  working-directory: C:\Users\moham\Desktop\Summer1401-SE-Team05\phase5\SampleLibrary.sln.DotSettings.user
+  working-directory: phase5
 
 - name: Test
   run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
-  working-directory: C:\Users\moham\Desktop\Summer1401-SE-Team05\phase5\SampleLibrary.sln.DotSettings.user
+  working-directory: phase5
