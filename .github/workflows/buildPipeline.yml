@@ -2,30 +2,26 @@ name: build
 
 on:
     push:
-        branches: ["CI-CD"]
+        branches: [CI-CD]
     pull_request:
-        branches: ["CI-CD"]
+        branches: [master]
 
 jobs:
     build:
         runs-on: ubuntu-latest
 
     steps:
-        - uses: actions/checkout@v3
-
-        - name: Setup .NET
-          uses: actions/setup-dotnet@v2
-          with:
-              dotnet-version: 6.0.x
-
-        - name: Install dependencies
-          run: dotnet restore
-          working-directory: phase5
-
-        - name: Build
-          run: dotnet build --configuration Release --no-restore
-          working-directory: phase5
-
-        - name: Test
-          run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
-          working-directory: phase5
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+          dotnet-version: 6.0.x
+    - name: Install dependencies
+      run: dotnet restore
+      working-directory: phase5
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      working-directory: phase5
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
+      working-directory: phase5
