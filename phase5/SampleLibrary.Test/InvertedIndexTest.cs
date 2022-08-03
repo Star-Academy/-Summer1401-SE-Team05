@@ -22,6 +22,7 @@ public class InvertedIndexTest
         //Assert
         invertedIndex.WordToDocumentMap.Should().BeEquivalentTo(expected);
     }
+    
     [Fact]
     public void ShowFilesTest()
     {
