@@ -76,7 +76,7 @@ public class FileReaderTest
         var result = fileReader.GetFileNames();
         
         //Assert
-        result.Should().Equal(expected);
+        result.Should().BeEquivalentTo(expected);
         File.Delete(fileName1);
         File.Delete(fileName2);
     }
