@@ -96,5 +96,7 @@ public class FileReaderTest
         
         //Assert
         result.Should().Equal(expected);
+        File.Delete(fileName1);
+        File.Delete(fileName2);
     }
 }

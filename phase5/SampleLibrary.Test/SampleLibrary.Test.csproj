@@ -28,8 +28,4 @@
     <ProjectReference Include="..\SampleLibrary\SampleLibrary.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="testResources" />
-  </ItemGroup>
-
 </Project>
