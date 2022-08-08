@@ -8,7 +8,7 @@ public class FileReaderTest
 {
 
     private readonly string _path =
-        Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "testResources");
+        Path.Combine(Directory.GetCurrentDirectory(), "testResources");
 
     
     private string generateRandomString()
