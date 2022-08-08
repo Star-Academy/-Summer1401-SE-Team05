@@ -7,8 +7,7 @@ namespace SampleLibrary.Test;
 public class FileReaderTest
 {
 
-    private readonly string _path =
-        Path.Combine(Directory.GetCurrentDirectory(), "testResources");
+    private readonly string _path = Directory.GetCurrentDirectory();
 
     
     private string generateRandomString()
@@ -27,24 +26,6 @@ public class FileReaderTest
         }
     }
     
-    [Fact]
-    public void GetFileContentTest()
-    {
-
-        //Arrange
-        var content = generateRandomString();
-        var filePath = Path.Combine(_path, "my_text1.txt");
-        CreateFileWithContent(filePath, content);
-        var fileReader = new FileReader(_path);
-        
-        //Act
-        var result = fileReader.getFileContent(filePath);
-
-        //Assert
-        result.Should().Be(content);
-        File.Delete(filePath);
-    }
-
     [Fact]
     public void ReadFilesTest()
     {
@@ -90,7 +71,7 @@ public class FileReaderTest
         CreateFileWithContent(fileName2, content2);
 
         //Act
-        var temp = fileReader.ReadFiles();
+        fileReader.ReadFiles();
         // temp is just for calling ReadFiles function
         var result = fileReader.GetFileNames();
         

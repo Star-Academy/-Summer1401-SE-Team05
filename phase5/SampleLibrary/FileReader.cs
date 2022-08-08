@@ -3,24 +3,13 @@ namespace SampleLibrary;
 public class FileReader
 {
     private readonly string _path;
-    public List<string?> _fileNames = new ();
+    private List<string?> _fileNames = new ();
 
     public FileReader(string path)
     {
         _path = path;
     }
     
-    
-    public string getFileContent(string path)
-    {
-        string content;
-        using (var r = new StreamReader(path))
-        {
-            content = r.ReadToEnd();
-        }
-
-        return content;
-    }
     
     public Dictionary<string, string> ReadFiles()
     {
