@@ -2,7 +2,7 @@ namespace SampleLibrary;
 
 public class FileReader
 {
-    private readonly String _path;
+    private readonly string _path;
     public List<string?> _fileNames = new ();
 
     public FileReader(string path)
@@ -14,7 +14,7 @@ public class FileReader
     public string getFileContent(string path)
     {
         string content;
-        using (StreamReader r = new StreamReader(path))
+        using (var r = new StreamReader(path))
         {
             content = r.ReadToEnd();
         }
@@ -25,7 +25,7 @@ public class FileReader
     public Dictionary<string, string> ReadFiles()
     {
         var fileNameToContent = new Dictionary<string, string>();
-        foreach (string file in Directory.GetFiles(_path, "*.txt"))
+        foreach (var file in Directory.GetFiles(_path, "*.txt"))
         {
             var content = File.ReadAllText(file).ToUpper();
             var filename = Path.GetFileName(file);
