@@ -17,9 +17,6 @@
       </map>
     </option>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/moham/Desktop/Summer1401-SE-Team05/phase4/SimpleCalculator.BusinessTest/OperatorBusiness/Operators/DivisionOperatorTests.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -35,7 +32,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.SimpleCalculator.Console">
+  <component name="RunManager">
     <configuration name="SimpleCalculator.Console" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />

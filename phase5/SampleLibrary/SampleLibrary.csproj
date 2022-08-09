@@ -4,6 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>StarAcademy.CodeStar14091.Team05.SampleLibrary</PackageId>
+    <Authors>Mohammad Izadi Hossein Masoodi</Authors>
+    <Company>Star Academy</Company>
   </PropertyGroup>
 
   <ItemGroup>
