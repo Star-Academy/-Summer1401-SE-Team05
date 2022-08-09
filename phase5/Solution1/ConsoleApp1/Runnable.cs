@@ -4,27 +4,53 @@ public class Runnable
 {
     private ReaderWriter _readerWriter;
     private FileReader _fileReader;
+    private InvertedIndex _invertedIndex;
+    private DocumentChecker _documentChecker;
 
-    public Runnable(ReaderWriter readerWriter)
+    public Runnable(ReaderWriter readerWriter, InvertedIndex invertedIndex, DocumentChecker documentChecker)
     {
         _readerWriter = readerWriter;
+        _documentChecker = documentChecker;
+        _invertedIndex = invertedIndex;
     }
 
     private void GetPathFromUser()
     {
-        _readerWriter.WriteLine("please enter the path of your resources");
-        var path = _readerWriter.ReadLine();
+        var path = 
+            _readerWriter.PromptUserToEnterInfoAndReturn("please enter the path of your resources:");
         _fileReader = new FileReader(path);
     }
 
-    public void Run()
+    
+    private void Initialize()
     {
         GetPathFromUser();
-        getQueryFromUser();
+        _invertedIndex.createIndex(_fileReader.ReadFiles());
     }
 
-    private void getQueryFromUser()
+    private string GetQueryFromUser()
     {
-        
+        return _readerWriter.PromptUserToEnterInfoAndReturn("please enter your query:");
     }
+    
+    
+    private WordContainer GetWordContainerOfQuery(string query)
+    {
+        var words = query.Split("//s").ToList();
+        var plusWordSeparator = new PlusWordSeparator();
+        var minusWordSeparator = new MinusWordSeparator();
+        var normalWords = plusWordSeparator.separate(minusWordSeparator.separate(words));
+
+        return new WordContainer(normalWords, plusWordSeparator.Words, minusWordSeparator.Words);
+    }
+    
+    public void Run()
+    {
+        Initialize();
+        var query = GetQueryFromUser();
+        var container = GetWordContainerOfQuery(query);
+        var validDocuments = _documentChecker.GetValidDocuments(container);
+        _readerWriter.writeList(validDocuments);
+    }
+
 }

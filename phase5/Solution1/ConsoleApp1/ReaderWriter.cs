@@ -7,7 +7,7 @@ public class ReaderWriter
         return Console.ReadLine();
     }
 
-    public void WriteLine(string toWrite)
+    private void WriteLine(string toWrite)
     {
         Console.WriteLine(toWrite);
     }
@@ -19,4 +19,11 @@ public class ReaderWriter
             WriteLine(str);
         }
     }
+
+    public string PromptUserToEnterInfoAndReturn(String prompt)
+    {
+        WriteLine(prompt);
+        return ReadLine();
+    }
+    
 }

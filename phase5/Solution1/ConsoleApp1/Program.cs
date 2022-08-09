@@ -5,6 +5,8 @@ public class Program
     public static void Main(string[] args)
     {
         var readerWriter = new ReaderWriter();
-        new Runnable(readerWriter).Run();
+        var invertedIndex = new InvertedIndex();
+        var documentChecker = new DocumentChecker(invertedIndex);
+        new Runnable(readerWriter, invertedIndex, documentChecker).Run();
     }
 }
