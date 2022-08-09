@@ -6,7 +6,7 @@ public interface IInvertedIndex
 
     public void makeWordToDocumentMap(string[] words, string fileName);
 
-    public void showFiles(Dictionary<string, string> fileNameToContent);
+    public void createIndex(Dictionary<string, string> fileNameToContent);
 
     
 

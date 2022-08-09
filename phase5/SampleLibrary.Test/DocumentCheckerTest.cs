@@ -54,7 +54,7 @@ public class DocumentCheckerTest
     [InlineData("second", "1", true)]
     [InlineData("hi", "4", false)]
     [InlineData("third", "3", true)]
-    public void DocumentContainsWordTest(string word, string documentName, bool expected)
+    public void DocumentChecker_CheckDocumentContainsWord(string word, string documentName, bool expected)
     {
         //arrange
         var invertedIndex = Substitute.For<IInvertedIndex>();
@@ -70,7 +70,7 @@ public class DocumentCheckerTest
     
     [Theory]
     [MemberData(nameof(Data))]
-    public void GetDocumentsWithAtLeastOneWordTest(List<string> words, List<string> expected)
+    public void DocumentChecker_GetDocumentsWithAtLeastOneWord(List<string> words, List<string> expected)
     {
         //arrange
         var invertedIndex = Substitute.For<IInvertedIndex>();
@@ -88,7 +88,7 @@ public class DocumentCheckerTest
     
     [Theory]
     [MemberData(nameof(NormalWordTestData))]
-    public void GetDocumentsWithAllWordsTest(List<string> words, List<string> expected)
+    public void DocumentChecker_GetDocumentsWithAllWordsTest(List<string> words, List<string> expected)
     {
         //arrange
         var invertedIndex = Substitute.For<IInvertedIndex>();

@@ -20,12 +20,12 @@ public class InvertedIndex : IInvertedIndex
             }
         }
     }
-    public void showFiles(Dictionary<string, string> fileNameToContent)
+    public void createIndex(Dictionary<string, string> fileNameToContent)
     {
         foreach (var keyValuePair in fileNameToContent)
         {
-            string fileName = keyValuePair.Key;
-            string[] words = keyValuePair.Value.Split();
+            var fileName = keyValuePair.Key;
+            var words = keyValuePair.Value.Split();
             makeWordToDocumentMap(words, fileName);
         }
     }
