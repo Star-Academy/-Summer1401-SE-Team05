@@ -9,10 +9,10 @@ public class Runnable
         _readerWriter = readerWriter;
     }
 
-    public string GetPathFromUser()
+    public void GetPathFromUser()
     {
         _readerWriter.WriteLine("please enter the path of your resources");
-        return _readerWriter.ReadLine();
+        _readerWriter.ReadLine();
     }
 
     public void Run()
