@@ -7,4 +7,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="StarAcademy.CodeStar14901.Team05.SampleLibrary" Version="1.0.3" />
+    </ItemGroup>
+
 </Project>

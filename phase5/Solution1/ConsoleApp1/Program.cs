@@ -1,3 +1,5 @@
+using SampleLibrary;
+
 namespace ConsoleApp1;
 
 public class Program

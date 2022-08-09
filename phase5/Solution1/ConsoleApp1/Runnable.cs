@@ -1,3 +1,5 @@
+using SampleLibrary;
+
 namespace ConsoleApp1;
 
 public class Runnable
@@ -38,8 +40,8 @@ public class Runnable
     {
         var words = query.Split("//s").ToList();
         var plusWordSeparator = new PlusWordSeparator();
-        var minusWordSeparator = new MinusWordSeparator();
-        var normalWords = plusWordSeparator.separate(minusWordSeparator.separate(words));
+        var minusWordSeparator = new MinusWordSeperator();
+        var normalWords = plusWordSeparator.Separate(minusWordSeparator.Separate(words));
 
         return new WordContainer(normalWords, plusWordSeparator.Words, minusWordSeparator.Words);
     }
