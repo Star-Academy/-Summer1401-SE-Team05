@@ -7,7 +7,7 @@ public class InvertedIndex : IInvertedIndex
 
     public void makeWordToDocumentMap(string[] words, string fileName) 
     {
-        foreach(string word in words) 
+        foreach(var word in words) 
         {
             if (WordToDocumentMap.ContainsKey(word)) 
             {

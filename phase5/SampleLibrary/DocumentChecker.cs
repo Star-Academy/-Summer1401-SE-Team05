@@ -19,7 +19,6 @@ public class DocumentChecker
 
         var documents = invertedIndex.WordToDocumentMap[words[0]];
         foreach (var word in words)
-        
         {
             documents = documents.Where(x => invertedIndex.WordToDocumentMap[word].Contains(x)).ToList();
         }
@@ -41,12 +40,18 @@ public class DocumentChecker
     public List<string> GetValidDocuments(WordContainer wordContainer)
     {
         var documentsWithAtLeastOneMinusWord = GetDocumentsWithAtLeastOneWord(wordContainer.MinusWords);
-        var haveMinusWords = documentsWithAtLeastOneMinusWord.Count != 0;
         var documentsWithAtLeastOnePlusWord = GetDocumentsWithAtLeastOneWord(wordContainer.PlusWords);
-        var havePlusWords = documentsWithAtLeastOnePlusWord.Count != 0;
         
-        return GetDocumentsWithAllWords(wordContainer.NormalWords)
-            .Where(x => !havePlusWords || documentsWithAtLeastOnePlusWord.Contains(x))
-            .Where(x => !haveMinusWords || !documentsWithAtLeastOneMinusWord.Contains(x)).ToList();
+        var validDocuments = GetDocumentsWithAllWords(wordContainer.NormalWords);
+        if (documentsWithAtLeastOnePlusWord.Count != 0)
+        {
+            validDocuments = validDocuments.Where(x => documentsWithAtLeastOnePlusWord.Contains(x)).ToList();
+        }
+        if (documentsWithAtLeastOneMinusWord.Count != 0)
+        {
+            validDocuments = validDocuments.Where(x => !documentsWithAtLeastOneMinusWord.Contains(x)).ToList();
+        }
+
+        return validDocuments;
     }
 }
