@@ -5,7 +5,7 @@ namespace SampleLibrary.Test;
 public class InvertedIndexTest
 {
     [Fact]
-    public void MakeWordToDocumentMapTest()
+    public void MakeWordToDocumentMap_MapMadeCorrectly()
     {
         //Arrange
         var invertedIndex = new InvertedIndex();
@@ -24,7 +24,7 @@ public class InvertedIndexTest
     }
     
     [Fact]
-    public void ShowFilesTest()
+    public void CreateIndex_IndexMadeCorrectly()
     {
         //Arrange
         var invertedIndex = new InvertedIndex();
@@ -39,7 +39,7 @@ public class InvertedIndexTest
             {"2", new List<string> {"first", "second"}}
         };
         //Act
-        invertedIndex.showFiles(mockedDictionary);
+        invertedIndex.createIndex(mockedDictionary);
         //Assert
         invertedIndex.WordToDocumentMap.Should().BeEquivalentTo(expected);
     }

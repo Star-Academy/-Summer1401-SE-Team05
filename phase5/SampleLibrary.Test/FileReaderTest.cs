@@ -27,7 +27,7 @@ public class FileReaderTest
     }
     
     [Fact]
-    public void ReadFilesTest()
+    public void FileReader_GetFileContent()
     {
         //Arrange
 
@@ -56,7 +56,7 @@ public class FileReaderTest
     }
 
     [Fact]
-    public void GetFileNamesTest()
+    public void FileReader_GetFileNames()
     {
         //Arrange
         var expected = new List<string>{"TestText1.txt", "TestText2.txt"};
