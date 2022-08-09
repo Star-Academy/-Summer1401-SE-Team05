@@ -7,15 +7,13 @@ public class SumOperatorTests
 {
     [Theory]
     [InlineData(1, 2, 3)]
-    [InlineData(3, 4, 7)]
-    [InlineData(-45, 111, 66)]
     [InlineData(int.MaxValue, 1, int.MinValue)]
-    public void SumOperator_AddNumbers_ReturnAdditionResult(int first, int second, int expected)
+    public void SumOperator_AddNumbers_ReturnAdditionResult(int firstToAdd, int secondToAdd, int expected)
     {
         //Arrange
-        SumOperator sumOperator = new SumOperator();
+        var sumOperator = new SumOperator();
         //Act
-        var result = sumOperator.Calculate(first, second);
+        var result = sumOperator.Calculate(firstToAdd, secondToAdd);
         //Assert
         result.Should().Be(expected);
     }

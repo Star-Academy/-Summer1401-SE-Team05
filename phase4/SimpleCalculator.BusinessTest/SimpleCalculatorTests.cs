@@ -21,10 +21,10 @@ public class SimpleCalculatorTests
     public void SimpleCalculatorCalculate_CalculateAnswerCorrectly_AddNumbers(int first, int second, int expected, OperatorEnum operatorType)
     {
         //Arrange
-        Calculator calculator = new Calculator(_operatorProvider);
         var mockedOperator = Substitute.For<IOperator>();
         mockedOperator.Calculate(Arg.Is(first), Arg.Is(second)).Returns(expected);
         _operatorProvider.GetOperator(Arg.Is(operatorType)).Returns(mockedOperator);
+        var calculator = new Calculator(_operatorProvider);
         //Act
         var result = calculator.Calculate(first, second, operatorType);
 

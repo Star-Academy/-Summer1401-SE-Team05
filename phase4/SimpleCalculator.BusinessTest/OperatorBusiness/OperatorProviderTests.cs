@@ -15,7 +15,7 @@ public class OperatorProviderTests
     public void OperatorProviding_GetCorrectOperator_ReturnEnumsOperator(OperatorEnum operatorType, Type type)
     {
         //Arrange
-        OperatorProvider operatorProvider = new OperatorProvider();
+        var operatorProvider = new OperatorProvider();
         //Act
         var result = operatorProvider.GetOperator(operatorType);
         //Assert
