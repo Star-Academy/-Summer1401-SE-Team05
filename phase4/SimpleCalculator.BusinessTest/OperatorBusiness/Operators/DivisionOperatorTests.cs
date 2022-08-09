@@ -21,14 +21,15 @@ public class DivisionOperatorTests
     [Theory]
     [InlineData(3, 0)]
     [InlineData(0, 0)]
+    
     public void DivisionOperator_DivideByZero_ThrowDivideByZeroException(int dividend, int divisor)
     {
         //Arrange
         var divideOperator = new DivisionOperator();
         //Act
+        Action divide = () => divideOperator.Calculate(dividend, divisor);
         
-        var ex = Assert.Throws<DivideByZeroException>(() => divideOperator.Calculate(dividend, divisor));
         //Assert
-        Assert.Equal(ex.Message, "Attempted to divide by zero.");
+        Assert.Throws<DivideByZeroException>(divide);
     }
 }

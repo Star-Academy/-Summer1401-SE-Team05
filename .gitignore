@@ -3,6 +3,7 @@
 **/obj/
 **/out/
 **/.idea
+**/.vscode
 
 # Created by https://www.toptal.com/developers/gitignore/api/java,jetbrains+all,csharp,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,jetbrains+all,csharp,visualstudiocode
