@@ -24,7 +24,7 @@ public class FileReader
         return fileNameToContent;
     }
 
-    public List<string?> GetFileNames(){
+    public IEnumerable<string?> GetFileNames(){
         return _fileNames;
     }
 }
