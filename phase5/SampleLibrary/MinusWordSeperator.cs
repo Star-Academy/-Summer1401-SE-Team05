@@ -1,6 +1,6 @@
 namespace SampleLibrary;
 
-public class MinusWordSeperator : ISeparator
+public class MinusWordSeparator : ISeparator
 {
     public List<string> Words { get; set; } = new ();
     public List<string> Separate(List<string> toSeparate)

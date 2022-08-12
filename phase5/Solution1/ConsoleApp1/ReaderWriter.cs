@@ -12,7 +12,7 @@ public class ReaderWriter : IView
         Console.WriteLine(toWrite);
     }
 
-    public void writeList(IEnumerable<string> toWrite)
+    public void WriteList(IEnumerable<string> toWrite)
     {
         foreach (var str in toWrite)
         {

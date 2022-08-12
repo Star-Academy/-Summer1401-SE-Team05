@@ -6,7 +6,7 @@ public interface IView
 
     public void WriteLine(string toWrite);
 
-    public void writeList(IEnumerable<string> toWrite);
+    public void WriteList(IEnumerable<string> toWrite);
 
     public string PromptUserToEnterInfoAndReturn(string prompt);
     

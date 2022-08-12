@@ -37,7 +37,7 @@ public class DocumentChecker
 
 
     //a valid document is a document that contains all normal words, at least on plus word and no minus words
-    public List<string> GetValidDocuments(WordContainer wordContainer)
+    public IEnumerable<string> GetValidDocuments(WordContainer wordContainer)
     {
         var documentsWithAtLeastOneMinusWord = GetDocumentsWithAtLeastOneWord(wordContainer.MinusWords);
         var documentsWithAtLeastOnePlusWord = GetDocumentsWithAtLeastOneWord(wordContainer.PlusWords);

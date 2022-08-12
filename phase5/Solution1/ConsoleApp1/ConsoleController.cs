@@ -9,7 +9,7 @@ public class ConsoleController
     private InvertedIndex _invertedIndex;
     private DocumentChecker _documentChecker;
 
-    public ConsoleController(ReaderWriter readerWriter, InvertedIndex invertedIndex, DocumentChecker documentChecker)
+    public ConsoleController(IView readerWriter, InvertedIndex invertedIndex, DocumentChecker documentChecker)
     {
         _readerWriter = readerWriter;
         _documentChecker = documentChecker;
@@ -52,7 +52,7 @@ public class ConsoleController
         var query = GetQueryFromUser();
         var container = GetWordContainerOfQuery(query);
         var validDocuments = _documentChecker.GetValidDocuments(container);
-        _readerWriter.writeList(validDocuments);
+        _readerWriter.WriteList(validDocuments);
     }
 
 }

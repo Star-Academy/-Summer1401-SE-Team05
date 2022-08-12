@@ -14,9 +14,7 @@ public class InvertedIndex : IInvertedIndex
                 WordToDocumentMap[word].Add(fileName);
             } else 
             {
-                List<string> documentList = new ();
-                documentList.Add(fileName);
-                WordToDocumentMap[word] = documentList;
+                WordToDocumentMap[word] = new List<string> {fileName};
             }
         }
     }

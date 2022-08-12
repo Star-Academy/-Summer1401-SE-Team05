@@ -12,5 +12,12 @@ public class WordContainer
         PlusWords = plusWords;
         MinusWords = minusWords;
     }
+
+    public WordContainer(List<ISeparator> separators)
+    {
+        PlusWords = separators[0].Words;
+        MinusWords = separators[1].Words;
+        NormalWords = separators[2].Words;
+    }
     
 }
