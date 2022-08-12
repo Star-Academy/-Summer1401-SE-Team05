@@ -2,14 +2,14 @@ using SampleLibrary;
 
 namespace ConsoleApp1;
 
-public class Runnable
+public class ConsoleController
 {
-    private ReaderWriter _readerWriter;
+    private IView _readerWriter;
     private FileReader _fileReader;
     private InvertedIndex _invertedIndex;
     private DocumentChecker _documentChecker;
 
-    public Runnable(ReaderWriter readerWriter, InvertedIndex invertedIndex, DocumentChecker documentChecker)
+    public ConsoleController(ReaderWriter readerWriter, InvertedIndex invertedIndex, DocumentChecker documentChecker)
     {
         _readerWriter = readerWriter;
         _documentChecker = documentChecker;

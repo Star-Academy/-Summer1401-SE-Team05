@@ -1,18 +1,18 @@
 namespace ConsoleApp1;
 
-public class ReaderWriter
+public class ReaderWriter : IView
 {
     public string ReadLine()
     {
         return Console.ReadLine();
     }
 
-    private void WriteLine(string toWrite)
+    public void WriteLine(string toWrite)
     {
         Console.WriteLine(toWrite);
     }
 
-    public void writeList(List<string> toWrite)
+    public void writeList(IEnumerable<string> toWrite)
     {
         foreach (var str in toWrite)
         {

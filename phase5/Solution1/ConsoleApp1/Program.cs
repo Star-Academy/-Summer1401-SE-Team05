@@ -9,6 +9,6 @@ public class Program
         var readerWriter = new ReaderWriter();
         var invertedIndex = new InvertedIndex();
         var documentChecker = new DocumentChecker(invertedIndex);
-        new Runnable(readerWriter, invertedIndex, documentChecker).Run();
+        new ConsoleController(readerWriter, invertedIndex, documentChecker).Run();
     }
 }
