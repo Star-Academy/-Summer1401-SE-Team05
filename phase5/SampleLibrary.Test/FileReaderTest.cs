@@ -10,7 +10,7 @@ public class FileReaderTest
     private readonly string _path = Directory.GetCurrentDirectory();
 
     
-    private string generateRandomString()
+    private string GenerateRandomString()
     {
         var random = new Random();
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -27,16 +27,16 @@ public class FileReaderTest
     }
     
     [Fact]
-    public void FileReader_GetFileContent()
+    public void FileReader_GetFileContent_returnsContentOfFile()
     {
         //Arrange
 
         var fileName1 = Path.Combine(_path, "TestText1.txt");
-        var content1 = generateRandomString();
+        var content1 = GenerateRandomString();
         CreateFileWithContent(fileName1, content1);
 
         var fileName2 = Path.Combine(_path, "TestText2.txt");
-        var content2 = generateRandomString();
+        var content2 = GenerateRandomString();
         CreateFileWithContent(fileName2, content2);
 
         var expected = new Dictionary<string, string>
@@ -56,18 +56,18 @@ public class FileReaderTest
     }
 
     [Fact]
-    public void FileReader_GetFileNames()
+    public void FileReader_GetFileNames_returnsNameOfAllFilesInDirectory()
     {
         //Arrange
         var expected = new List<string>{"TestText1.txt", "TestText2.txt"};
         var fileReader = new FileReader(_path);
         
         var fileName1 = Path.Combine(_path, "TestText1.txt");
-        var content1 = generateRandomString();
+        var content1 = GenerateRandomString();
         CreateFileWithContent(fileName1, content1);
 
         var fileName2 = Path.Combine(_path, "TestText2.txt");
-        var content2 = generateRandomString();
+        var content2 = GenerateRandomString();
         CreateFileWithContent(fileName2, content2);
 
         //Act

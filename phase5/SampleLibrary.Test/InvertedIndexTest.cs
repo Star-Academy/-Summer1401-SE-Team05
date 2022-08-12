@@ -38,8 +38,10 @@ public class InvertedIndexTest
             {"1", new List<string> {"first", "second"}},
             {"2", new List<string> {"first", "second"}}
         };
+        
         //Act
         invertedIndex.createIndex(mockedDictionary);
+        
         //Assert
         invertedIndex.WordToDocumentMap.Should().BeEquivalentTo(expected);
     }
