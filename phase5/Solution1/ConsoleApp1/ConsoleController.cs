@@ -35,23 +35,12 @@ public class ConsoleController
         return _readerWriter.PromptUserToEnterInfoAndReturn("please enter your query:");
     }
     
-    
-    private WordContainer GetWordContainerOfQuery(string query)
-    {
-        var words = query.Split("//s").ToList();
-        var plusWordSeparator = new PlusWordSeparator();
-        var minusWordSeparator = new MinusWordSeperator();
-        var normalWords = plusWordSeparator.Separate(minusWordSeparator.Separate(words));
-
-        return new WordContainer(normalWords, plusWordSeparator.Words, minusWordSeparator.Words);
-    }
-    
     public void Run()
     {
         Initialize();
         var query = GetQueryFromUser();
-        var container = GetWordContainerOfQuery(query);
-        var validDocuments = _documentChecker.GetValidDocuments(container);
+        var validDocuments = 
+            _documentChecker.GetValidDocuments(new ContainerBuilder(query).GetContainer());
         _readerWriter.WriteList(validDocuments);
     }
 

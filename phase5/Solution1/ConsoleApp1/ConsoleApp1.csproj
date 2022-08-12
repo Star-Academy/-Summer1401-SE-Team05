@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="StarAcademy.CodeStar14901.Team05.SampleLibrary" Version="1.0.3" />
+      <PackageReference Include="StarAcademy.CodeStar14901.Team05.SampleLibrary" Version="1.0.4" />
     </ItemGroup>
 
 </Project>
