@@ -1,6 +1,6 @@
 namespace SampleLibrary.Test;
 using FluentAssertions;
-public class PlusWordHandlerTest
+public class PlusWordSeparatorTest
 {
     
     public readonly List<string> AllWords = new(new [] {"+this", "-is", "+a", "test", "string", "-for", "+word", "bank"});

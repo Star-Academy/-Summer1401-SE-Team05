@@ -2,7 +2,7 @@ using FluentAssertions;
 
 namespace SampleLibrary.Test;
 
-public class MinusWordHandlerTest
+public class MinusWordSeparatorTest
 {
     private readonly List<string> _allWords = new(new [] {"+this", "-is", "+a", "test", "string", "-for", "+word", "bank"});
     private readonly List<string> _allWordsMinus = new(new [] {"is", "for"});

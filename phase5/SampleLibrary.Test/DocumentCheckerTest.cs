@@ -75,7 +75,7 @@ public class DocumentCheckerTest
         //arrange
         var invertedIndex = Substitute.For<IInvertedIndex>();
         invertedIndex.WordToDocumentMap.Returns(_testIndex);
-        DocumentChecker documentChecker = new(invertedIndex);
+        var documentChecker = new DocumentChecker(invertedIndex);
         
         //act
         var result = documentChecker.GetDocumentsWithAtLeastOneWord(words);
