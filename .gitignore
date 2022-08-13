@@ -537,3 +537,7 @@ fabric.properties
 # Ignore code-workspaces
 
 # End of https://www.toptal.com/developers/gitignore/api/java,jetbrains+all,csharp,visualstudiocode
+/Phase1_phase2/
+/Phase3/
+/phase4/
+/.idea/
