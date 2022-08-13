@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="4f0778e0-f05d-4681-b919-31a7e2a5fc91" name="Changes" comment="" />
+=======
+    <list default="true" id="7e5c82b4-5b19-4864-9f98-a5a94734d2d5" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< Updated upstream
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="CI-CD" />
   </component>
@@ -20,11 +25,33 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/moham/Desktop/Summer1401-SE-Team05/phase5/SampleLibrary.Test/DocumentCheckerTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ae1f29ab81b34e909584423a3fc6fff7a23898/ef/fc593a40/File.cs" root0="SKIP_HIGHLIGHTING" />
+=======
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/moham/Desktop/Summer1401-SE-Team05/phase5/SampleLibrary/DocumentChecker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ee7009e8272147f8ab2190e597a3798127400/4b/f3c5f27f/ThreadLocalContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ee7009e8272147f8ab2190e597a3798127400/db/cf1b87df/CallRouterResolver.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/moham/Desktop/Summer1401-SE-Team05/phase5/SampleLibrary/DocumentChecker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/moham/Desktop/Summer1401-SE-Team05/phase5/SampleLibrary/DocumentChecker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ee7009e8272147f8ab2190e597a3798127400/e0/f32ca196/CouldNotSetReturnDueToNoLastCallException.cs" root0="SKIP_HIGHLIGHTING" />
+>>>>>>> Stashed changes
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectId" id="2CqQTVBG4cCnPd71toG4c9oShr5" />
+=======
+  <component name="ProjectId" id="2ChE5i5KNLoRUS9X7bYAvE7ws13" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+>>>>>>> Stashed changes
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -42,6 +69,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< Updated upstream
       <changelist id="4f0778e0-f05d-4681-b919-31a7e2a5fc91" name="Changes" comment="" />
       <created>1659527646560</created>
       <option name="number" value="Default" />
@@ -118,6 +146,70 @@
       <updated>1660023021039</updated>
     </task>
     <option name="localTasksCounter" value="10" />
+=======
+      <changelist id="7e5c82b4-5b19-4864-9f98-a5a94734d2d5" name="Changes" comment="" />
+      <created>1659246239145</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659246239145</updated>
+      <workItem from="1659246304809" duration="7837000" />
+      <workItem from="1659273246243" duration="488000" />
+      <workItem from="1659328358386" duration="10766000" />
+      <workItem from="1659340012158" duration="2806000" />
+      <workItem from="1659354400701" duration="6297000" />
+      <workItem from="1659413487136" duration="14178000" />
+    </task>
+    <task id="LOCAL-00001" summary="adding resources for testing">
+      <created>1659341812120</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1659341812120</updated>
+    </task>
+    <task id="LOCAL-00002" summary="making main body of code">
+      <created>1659348521542</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1659348521542</updated>
+    </task>
+    <task id="LOCAL-00003" summary="TDD document checker">
+      <created>1659415520349</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659415520349</updated>
+    </task>
+    <task id="LOCAL-00004" summary=":(">
+      <created>1659418568572</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1659418568572</updated>
+    </task>
+    <task id="LOCAL-00005" summary="TDD for DocumentChecker.cs">
+      <created>1659422963361</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1659422963361</updated>
+    </task>
+    <task id="LOCAL-00006" summary="document checker almost done">
+      <created>1659427342388</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659427342388</updated>
+    </task>
+    <task id="LOCAL-00007" summary="document checker finished">
+      <created>1659427847507</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1659427847507</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+>>>>>>> Stashed changes
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +231,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+<<<<<<< Updated upstream
     <MESSAGE value="finishing resource access" />
     <MESSAGE value="test updating" />
     <MESSAGE value="file reader test" />
@@ -149,5 +242,15 @@
     <MESSAGE value="hopefully it is ok now :)" />
     <MESSAGE value="cleaning" />
     <option name="LAST_COMMIT_MESSAGE" value="cleaning" />
+=======
+    <MESSAGE value="adding resources for testing" />
+    <MESSAGE value="making main body of code" />
+    <MESSAGE value="TDD document checker" />
+    <MESSAGE value=":(" />
+    <MESSAGE value="TDD for DocumentChecker.cs" />
+    <MESSAGE value="document checker almost done" />
+    <MESSAGE value="document checker finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="document checker finished" />
+>>>>>>> Stashed changes
   </component>
 </project>
