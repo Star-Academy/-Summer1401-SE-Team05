@@ -8,8 +8,8 @@ public class DatabaseInitializer
     public void Run()
     {
         
-        var scoresList = getListFromFile<Grade>("scores.json");
-        var studentsList = getListFromFile<Student>("students.json");
+        var scoresList = GetListFromFile<Grade>("scores.json");
+        var studentsList = GetListFromFile<Student>("students.json");
         
         addMembersAndSave(studentsList, scoresList);
         addStudentAverages();
@@ -29,7 +29,7 @@ public class DatabaseInitializer
         }
     }
     
-    private void addMembersAndSave(List<Student> studentsToAdd, List<Grade> gradesToAdd)
+    private void addMembersAndSave(IEnumerable<Student> studentsToAdd, IEnumerable<Grade> gradesToAdd)
     {
         using (var context = new PeopleContext())
         {
@@ -40,7 +40,7 @@ public class DatabaseInitializer
 
     }
 
-    private List<T>? getListFromFile<T> (string fileName)
+    private List<T>? GetListFromFile<T> (string fileName)
     {
         var path = getFilePathInResources(fileName);
         var data = getDataAtPath(path);

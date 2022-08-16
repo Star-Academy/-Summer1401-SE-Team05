@@ -15,7 +15,7 @@ public class ProgramController
         }
     }
 
-    public void initDataBase()
+    private void initDataBase()
     {
         try
         {
