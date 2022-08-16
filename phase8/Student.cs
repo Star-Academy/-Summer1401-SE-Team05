@@ -15,6 +15,6 @@ public class Student
     
     public override string ToString()
     {
-        return $"{FirstName} {LastName} {StudentNumber}: \n {Avg}";
+        return $"{FirstName} {LastName}: \n {Avg}";
     }
 }

@@ -11,8 +11,8 @@ using TopStudents;
 namespace TopStudents.Migrations
 {
     [DbContext(typeof(PeopleContext))]
-    [Migration("20220813120654_CreateGrade")]
-    partial class CreateGrade
+    [Migration("20220816073714_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

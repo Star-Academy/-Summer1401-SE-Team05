@@ -5,43 +5,65 @@ namespace TopStudents;
 public class DatabaseInitializer
 {
 
-    public void run()
+    public void Run()
     {
-        var scoresList = CreateScoresList(getDataAtPath(
-            "C:\\Users\\gamer\\OneDrive\\Desktop\\TopStudents\\scores.json"));
-        var studentsList = CreateStudentsList(getDataAtPath(
-            "C:\\Users\\gamer\\OneDrive\\Desktop\\TopStudents\\students.json"));
-        using (var context = new PeopleContext())
-        {
-            context.Grades.AddRange(scoresList);
-            context.Students.AddRange(studentsList);
-            context.SaveChanges();
-        }
+        
+        var scoresList = getListFromFile<Grade>("scores.json");
+        var studentsList = getListFromFile<Student>("students.json");
+        
+        addMembersAndSave(studentsList, scoresList);
+        addStudentAverages();
+    }
 
+    
+    private void addStudentAverages()
+    {
         using (var context = new PeopleContext())
         {
-            foreach (var contextStudent in context.Students.ToList())
+            foreach (var student in context.Students.ToList())
             {
-                contextStudent.Avg = context.Grades.Where(x => x.StudentNumber == contextStudent.StudentNumber)
+                student.Avg = context.Grades.Where(x => x.StudentNumber == student.StudentNumber)
                     .Select(x => x.Score).Average();
             }
             context.SaveChanges();
         }
     }
     
-    private static List<Grade> CreateScoresList(string scoreData)
+    private void addMembersAndSave(List<Student> studentsToAdd, List<Grade> gradesToAdd)
     {
-        return JsonSerializer.Deserialize<List<Grade>>(scoreData);
+        using (var context = new PeopleContext())
+        {
+            context.Grades.AddRange(gradesToAdd);
+            context.Students.AddRange(studentsToAdd);
+            context.SaveChanges();
+        }
+
     }
 
-    private static List<Student> CreateStudentsList(string studentData)
+    private List<T>? getListFromFile<T> (string fileName)
     {
-        return JsonSerializer.Deserialize<List<Student>>(studentData);
+        var path = getFilePathInResources(fileName);
+        var data = getDataAtPath(path);
+        return createList<T>(data);
     }
 
-    private static string getDataAtPath(string path)
+    private List<T>? createList<T> (string fileData)
+    {
+        return JsonSerializer.Deserialize<List<T>>(fileData);
+    }
+
+    
+    private string getDataAtPath(string path)
     {
         var r = new StreamReader(path);
         return r.ReadToEnd();
     }
+    
+    private string getFilePathInResources(string fileName)
+    {
+        return Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName,
+            "Resources",
+            fileName);
+    }
+
 }
