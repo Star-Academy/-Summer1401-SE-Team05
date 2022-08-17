@@ -14,7 +14,7 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         
-        builder.Services.AddSingleton<IInvertedIndex, InvertedIndex>();
+        builder.Services.AddScoped<IInvertedIndex, InvertedIndex>();
         
 
         var app = builder.Build();
