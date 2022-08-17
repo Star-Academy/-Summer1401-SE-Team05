@@ -12,7 +12,7 @@ public class MinusWordSeparatorTest
 
     
     [Fact]
-    public void MinusWordHandlerTest_ContainsMinusWord()
+    private void MinusWordHandlerTest_ContainsMinusWord()
     {
         //arrange
         var handler = new MinusWordSeparator();
@@ -27,7 +27,7 @@ public class MinusWordSeparatorTest
     }
     
     [Fact]
-    public void MinusWordHandlerTest_NoMinusWordsInList()
+    private void MinusWordHandlerTest_NoMinusWordsInList()
     {
         //arrange
         var handler = new MinusWordSeparator();

@@ -23,7 +23,7 @@ public class DocumentCheckerTest
         };
     }
     
-    public static IEnumerable<object[]> DataForValidDocumentFetching(){
+    private static IEnumerable<object[]> DataForValidDocumentFetching(){
         yield return new object[] { new List<string>{ "third", "first" }, new List<string>{ "second", "here" },
                                     new List<string>(), new List<string> {"1"}};
         yield return new object[] { new List<string>{ "all" }, new List<string>(),
@@ -33,14 +33,14 @@ public class DocumentCheckerTest
     }
 
     
-    public static IEnumerable<object[]> DataForGettingDocumentsWithAtLeastOneWord(){
+    private static IEnumerable<object[]> DataForGettingDocumentsWithAtLeastOneWord(){
         yield return new object[] { new List<string>{ "second" }, new List<string>{ "1" }};
         yield return new object[] { new List<string>{ "there", "hi" }, new List<string>{ "3", "4" }};
         yield return new object[] { new List<string>{ "third", "there" }, new List<string>{ "1", "2", "3", "4" }};
         yield return new object[] { new List<string>(), new List<string>()};
     }
     
-    public static IEnumerable<object[]> NormalWordTestData(){
+    private static IEnumerable<object[]> NormalWordTestData(){
         yield return new object[] { new List<string>{ "first", "second", "third" }, new List<string>{ "1" }};
         yield return new object[] { new List<string>{ "first", "third" }, new List<string>{ "1", "2" }};
         yield return new object[] { new List<string>{"here", "there"}, new List<string>()};
@@ -54,7 +54,7 @@ public class DocumentCheckerTest
     [InlineData("second", "1", true)]
     [InlineData("hi", "4", false)]
     [InlineData("third", "3", true)]
-    public void DocumentChecker_CheckDocumentContainsWord(string word, string documentName, bool expected)
+    private void DocumentChecker_CheckDocumentContainsWord(string word, string documentName, bool expected)
     {
         //arrange
         var invertedIndex = Substitute.For<IInvertedIndex>();
@@ -70,7 +70,7 @@ public class DocumentCheckerTest
     
     [Theory]
     [MemberData(nameof(DataForGettingDocumentsWithAtLeastOneWord))]
-    public void DocumentChecker_GetDocumentsWithAtLeastOneWord(List<string> words, List<string> expected)
+    private void DocumentChecker_GetDocumentsWithAtLeastOneWord(List<string> words, List<string> expected)
     {
         //arrange
         var invertedIndex = Substitute.For<IInvertedIndex>();
@@ -88,7 +88,7 @@ public class DocumentCheckerTest
     
     [Theory]
     [MemberData(nameof(NormalWordTestData))]
-    public void DocumentChecker_GetDocumentsWithAllWords(List<string> words, List<string> expected)
+    private void DocumentChecker_GetDocumentsWithAllWords(List<string> words, List<string> expected)
     {
         //arrange
         var invertedIndex = Substitute.For<IInvertedIndex>();
@@ -103,7 +103,7 @@ public class DocumentCheckerTest
     }
 
     [Fact]
-    public void GetValidDocumentsTest_noNormalWords()
+    private void GetValidDocumentsTest_noNormalWords()
     {
         //arrange
         var container = new WordContainer(new List<string>(),
@@ -123,7 +123,7 @@ public class DocumentCheckerTest
     
     [Theory]
     [MemberData(nameof(DataForValidDocumentFetching))]
-    public void GetValidDocumentsTest_AllTypesOfWords(List<string> normal, List<string> plus ,List<string> minus ,List<string> expected)
+    private void GetValidDocumentsTest_AllTypesOfWords(List<string> normal, List<string> plus ,List<string> minus ,List<string> expected)
     {
         //arrange
         var container = new WordContainer(normal, plus, minus);

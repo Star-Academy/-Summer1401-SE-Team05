@@ -5,7 +5,7 @@ namespace SampleLibrary.Test;
 public class InvertedIndexTest
 {
     [Fact]
-    public void MakeWordToDocumentMap_MapMadeCorrectly()
+    private void MakeWordToDocumentMap_MapMadeCorrectly()
     {
         //Arrange
         var invertedIndex = new InvertedIndex();
@@ -24,7 +24,7 @@ public class InvertedIndexTest
     }
     
     [Fact]
-    public void CreateIndex_IndexMadeCorrectly()
+    private void CreateIndex_IndexMadeCorrectly()
     {
         //Arrange
         var invertedIndex = new InvertedIndex();
