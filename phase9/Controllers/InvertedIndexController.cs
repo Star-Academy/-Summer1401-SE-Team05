@@ -4,12 +4,16 @@ using SampleLibrary;
 namespace ASP.Controllers;
 
 [ApiController]
-[Route("[controller]/[Action]")]
+[Route("[controller]/hoho")]
 public class InvertedIndexController : ControllerBase
 {
-    private InvertedIndex _invertedIndex = new ();
+    private IInvertedIndex _invertedIndex;
     private FileReader _fileReader = new(@"Resources");
 
+    public InvertedIndexController(IInvertedIndex invertedIndex)
+    {
+        _invertedIndex = invertedIndex;
+    }
     private void Initialize()
     {
         _invertedIndex.createIndex(_fileReader.ReadFiles());
