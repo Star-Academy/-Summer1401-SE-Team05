@@ -11,30 +11,26 @@ public class DatabaseInitializer
         var scoresList = GetListFromFile<Grade>("scores.json");
         var studentsList = GetListFromFile<Student>("students.json");
         
-        addMembersAndSave(studentsList, scoresList);
-        addStudentAverages();
+        addStudentsAndScoresToDatabase(studentsList, scoresList);
     }
 
     
-    private void addStudentAverages()
+    private void addStudentAverages(PeopleContext context)
     {
-        using (var context = new PeopleContext())
-        {
-            foreach (var student in context.Students.ToList())
+        foreach (var student in context.Students.ToList())
             {
                 student.Avg = context.Grades.Where(x => x.StudentNumber == student.StudentNumber)
                     .Select(x => x.Score).Average();
             }
-            context.SaveChanges();
-        }
     }
     
-    private void addMembersAndSave(IEnumerable<Student> studentsToAdd, IEnumerable<Grade> gradesToAdd)
+    private void addStudentsAndScoresToDatabase(IEnumerable<Student> studentsToAdd, IEnumerable<Grade> gradesToAdd)
     {
         using (var context = new PeopleContext())
         {
             context.Grades.AddRange(gradesToAdd);
             context.Students.AddRange(studentsToAdd);
+            addStudentAverages(context);
             context.SaveChanges();
         }
 
