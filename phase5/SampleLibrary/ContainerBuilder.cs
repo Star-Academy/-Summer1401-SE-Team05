@@ -24,13 +24,11 @@ public class ContainerBuilder
 
     private List<ISeparator> GetSeparators()
     {
-        var separators = new List<ISeparator>
+        return new List<ISeparator>
         {
             new PlusWordSeparator(),
             new MinusWordSeparator(),
             new NormalWordSeparator()
         };
-
-        return separators;
     }
 }

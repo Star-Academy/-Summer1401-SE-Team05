@@ -1,15 +1,14 @@
-using System.Reflection;
 using FluentAssertions;
 
 namespace SampleLibrary.Test;
 
 
-public class FileReaderTest
+public class FileReaderTest : IDisposable
 {
 
     private readonly string _path = Directory.GetCurrentDirectory();
+    private readonly List<string> _files = new ();
 
-    
     private string GenerateRandomString()
     {
         var random = new Random();
@@ -24,6 +23,7 @@ public class FileReaderTest
         {
             writer.Write(content);
         }
+        _files.Add(path);
     }
     
     [Fact]
@@ -51,8 +51,6 @@ public class FileReaderTest
 
         //Assert
         result.Should().BeEquivalentTo(expected);
-        File.Delete(fileName1);
-        File.Delete(fileName2);
     }
 
     [Fact]
@@ -77,7 +75,13 @@ public class FileReaderTest
         
         //Assert
         result.Should().BeEquivalentTo(expected);
-        File.Delete(fileName1);
-        File.Delete(fileName2);
+    }
+
+    public void Dispose()
+    {
+        foreach (var file in _files)
+        {
+            File.Delete(file);
+        }
     }
 }
