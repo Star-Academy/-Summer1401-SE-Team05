@@ -4,7 +4,7 @@ using SampleLibrary;
 namespace ASP.Controllers;
 
 [ApiController]
-[Route("[controller]/hoho")]
+[Route("[controller]/[action]")]
 public class InvertedIndexController : ControllerBase
 {
     private IInvertedIndex _invertedIndex;
